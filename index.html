@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0a0a0a" />
+<title>MMGA Records — Make Munich Greate Again</title>
+<meta name="description" content="MMGA Records — unabhängiges Musiklabel aus München. Artist für Artist, Track für Track. Ein Movement. Ein Sound. Eine Stadt." />
+<meta property="og:title" content="MMGA Records — Make Munich Greate Again" />
+<meta property="og:description" content="Independent Label aus München. Movement. Sound. Stadt." />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="./assets/css/main.css" />
+</head>
+<body data-page="home">
+
+<!-- Loader -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader__bar"></div>
+  <div class="loader__text">
+    <span>M</span><span>M</span><span>G</span><span>A</span>
+    <em>· Loading the Movement</em>
+  </div>
+</div>
+
+<!-- Cursor -->
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+<div class="cursor cursor--ring" id="cursorRing" aria-hidden="true"></div>
+
+<!-- Nav -->
+<header class="nav" id="nav">
+  <a class="nav__logo" href="#top" aria-label="MMGA Records Startseite">
+    <svg viewBox="0 0 64 64" width="36" height="36" aria-hidden="true">
+      <circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" stroke-width="2"/>
+      <text x="32" y="40" text-anchor="middle" font-family="Anton, sans-serif" font-size="22" fill="currentColor">M</text>
+    </svg>
+    <span>MMGA<small>Records</small></span>
+  </a>
+  <nav class="nav__links" aria-label="Hauptnavigation">
+    <a href="#manifest">Manifest</a>
+    <a href="#artists">Artists</a>
+    <a href="#sound">Sound</a>
+    <a href="#movement">Movement</a>
+    <a href="#join">Join</a>
+    <a href="#contact">Kontakt</a>
+  </nav>
+  <button class="nav__cta" data-cursor="hover">
+    <span>Demo senden</span>
+    <span aria-hidden="true">→</span>
+  </button>
+  <button class="nav__burger" id="burger" aria-label="Menü öffnen" aria-expanded="false">
+    <span></span><span></span>
+  </button>
+</header>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <a href="#manifest">Manifest</a>
+  <a href="#artists">Artists</a>
+  <a href="#sound">Sound</a>
+  <a href="#movement">Movement</a>
+  <a href="#join">Join</a>
+  <a href="#contact">Kontakt</a>
+</div>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero__grid" aria-hidden="true"></div>
+    <div class="hero__noise" aria-hidden="true"></div>
+
+    <div class="hero__meta">
+      <span class="tag">089 · MUNICH</span>
+      <span class="tag tag--dot">EST. 2021</span>
+      <span class="tag">INDEPENDENT</span>
+    </div>
+
+    <h1 class="hero__title">
+      <span class="line"><span class="word" data-split>MAKE</span></span>
+      <span class="line"><span class="word" data-split>MUNICH</span></span>
+      <span class="line line--outline"><span class="word" data-split>GREATE</span></span>
+      <span class="line"><span class="word" data-split>AGAIN.</span></span>
+    </h1>
+
+    <div class="hero__bottom">
+      <p class="hero__lead">
+        Wir sind ein unabhängiges Label aus dem Süden — geboren auf der Straße,
+        gewachsen im Studio. Artist für Artist. Track für Track.
+      </p>
+      <div class="hero__scroll">
+        <span class="dot"></span>
+        <span>scroll</span>
+      </div>
+    </div>
+
+    <!-- Animated skyline -->
+    <svg class="hero__skyline" viewBox="0 0 1920 220" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stop-color="rgba(255,255,255,0)"/>
+          <stop offset="100%" stop-color="rgba(255,255,255,.08)"/>
+        </linearGradient>
+      </defs>
+      <path fill="url(#sky)" stroke="rgba(255,255,255,.35)" stroke-width="1"
+        d="M0,220 L0,170 L90,170 L90,150 L150,150 L150,170 L240,170 L240,120 L260,120 L260,90 L280,90 L280,40 L300,40 L300,90 L320,90 L320,120 L340,120 L340,170 L420,170 L420,140 L500,140 L500,170 L580,170 L580,100 L600,100 L600,60 L620,60 L620,100 L640,100 L640,170 L740,170 L740,150 L820,150 L820,170 L900,170 L900,130 L920,130 L920,80 L940,80 L940,30 L960,30 L960,80 L980,80 L980,130 L1000,130 L1000,170 L1080,170 L1080,150 L1180,150 L1180,170 L1260,170 L1260,120 L1280,120 L1280,90 L1300,90 L1300,170 L1420,170 L1420,140 L1500,140 L1500,170 L1580,170 L1580,100 L1600,100 L1600,60 L1620,60 L1620,170 L1720,170 L1720,150 L1820,150 L1820,170 L1920,170 L1920,220 Z"/>
+    </svg>
+  </section>
+
+  <!-- TICKER -->
+  <section class="ticker" aria-hidden="true">
+    <div class="ticker__track">
+      <span>★ NEU · KIRA NOVA — „NACHTPALAST" out now</span>
+      <span>★ Booking open für 2026</span>
+      <span>★ MMGA NIGHT · BLITZ MÜNCHEN · 14.06.</span>
+      <span>★ Demos always welcome</span>
+      <span>★ NEU · KIRA NOVA — „NACHTPALAST" out now</span>
+      <span>★ Booking open für 2026</span>
+      <span>★ MMGA NIGHT · BLITZ MÜNCHEN · 14.06.</span>
+      <span>★ Demos always welcome</span>
+    </div>
+  </section>
+
+  <!-- MANIFEST / SCROLL STORYTELLING -->
+  <section class="manifest" id="manifest">
+    <div class="manifest__sticky">
+      <p class="manifest__eyebrow">01 — Manifest</p>
+      <h2 class="manifest__text">
+        <span class="word">Wir</span>
+        <span class="word">glauben</span>
+        <span class="word">daran,</span>
+        <span class="word">dass</span>
+        <span class="word">die</span>
+        <span class="word">nächste</span>
+        <span class="word">Generation</span>
+        <span class="word">deutschen</span>
+        <span class="word">Sounds</span>
+        <span class="word">aus</span>
+        <span class="word">München</span>
+        <span class="word">kommt.</span>
+        <span class="word">Roh,</span>
+        <span class="word">ehrlich,</span>
+        <span class="word">unabhängig.</span>
+      </h2>
+      <div class="manifest__caps">
+        <p>// Movement &nbsp; // Sound &nbsp; // Stadt</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED RELEASE -->
+  <section class="featured" id="featured">
+    <div class="featured__inner">
+      <div class="featured__art" data-tilt>
+        <div class="featured__cover">
+          <div class="featured__cover-inner">
+            <span class="featured__cover-tag">MMGA·014</span>
+            <h3 class="featured__cover-title">NACHT<br/>PALAST</h3>
+            <p class="featured__cover-artist">KIRA NOVA</p>
+            <div class="featured__cover-grid"></div>
+          </div>
+        </div>
+      </div>
+      <div class="featured__text">
+        <p class="eyebrow">02 — Featured Release</p>
+        <h2>NACHTPALAST</h2>
+        <p class="featured__byline">KIRA NOVA · LP · 11 Tracks · April 2026</p>
+        <p class="featured__desc">
+          Zwischen Schwabinger Neonlicht und Glockenbach-Beat — KIRA NOVAs Debüt
+          „Nachtpalast" ist eine Liebeserklärung an die nächtliche Seite Münchens.
+          Produziert im MMGA-Studio, gemastert in Berlin.
+        </p>
+        <ul class="tracklist">
+          <li><span>01</span><span>Isarflimmern</span><time>3:42</time></li>
+          <li><span>02</span><span>Nachtpalast</span><time>4:18</time></li>
+          <li><span>03</span><span>U6 nach Hause</span><time>3:11</time></li>
+          <li><span>04</span><span>Föhnfieber</span><time>2:58</time></li>
+          <li><span>05</span><span>Glockenbach</span><time>3:33</time></li>
+          <li><span>06</span><span>Englischer Garten 4AM</span><time>4:41</time></li>
+        </ul>
+        <div class="featured__cta">
+          <a class="btn btn--primary" href="#" data-cursor="hover">Auf Spotify hören →</a>
+          <a class="btn btn--ghost" href="./artists/kira-nova.html" data-cursor="hover">Artist Profil</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTISTS -->
+  <section class="artists" id="artists">
+    <header class="section-head">
+      <p class="eyebrow">03 — Roster</p>
+      <h2>Artists</h2>
+      <p class="section-sub">
+        Fünf Stimmen, eine Stadt. Klick dich rein.
+      </p>
+    </header>
+
+    <ul class="artist-list" id="artistList">
+      <li class="artist-row" data-artist="kira-nova" data-img="kira">
+        <a href="./artists/kira-nova.html" data-cursor="hover">
+          <span class="artist-row__num">01</span>
+          <span class="artist-row__name">Kira Nova</span>
+          <span class="artist-row__tag">Pop · Electronic</span>
+          <span class="artist-row__arrow">→</span>
+        </a>
+      </li>
+      <li class="artist-row" data-artist="vex" data-img="vex">
+        <a href="./artists/vex.html" data-cursor="hover">
+          <span class="artist-row__num">02</span>
+          <span class="artist-row__name">VEX</span>
+          <span class="artist-row__tag">Rap · Drill</span>
+          <span class="artist-row__arrow">→</span>
+        </a>
+      </li>
+      <li class="artist-row" data-artist="089-boy" data-img="boy">
+        <a href="./artists/089-boy.html" data-cursor="hover">
+          <span class="artist-row__num">03</span>
+          <span class="artist-row__name">089 BOY</span>
+          <span class="artist-row__tag">Hip-Hop · Trap</span>
+          <span class="artist-row__arrow">→</span>
+        </a>
+      </li>
+      <li class="artist-row" data-artist="lira" data-img="lira">
+        <a href="./artists/lira.html" data-cursor="hover">
+          <span class="artist-row__num">04</span>
+          <span class="artist-row__name">LIRA</span>
+          <span class="artist-row__tag">R&amp;B · Soul</span>
+          <span class="artist-row__arrow">→</span>
+        </a>
+      </li>
+      <li class="artist-row" data-artist="blok" data-img="blok">
+        <a href="./artists/blok.html" data-cursor="hover">
+          <span class="artist-row__num">05</span>
+          <span class="artist-row__name">BLOK</span>
+          <span class="artist-row__tag">Producer · Beats</span>
+          <span class="artist-row__arrow">→</span>
+        </a>
+      </li>
+    </ul>
+
+    <!-- floating preview -->
+    <div class="artist-preview" id="artistPreview" aria-hidden="true">
+      <div class="artist-preview__inner" data-img="kira"></div>
+    </div>
+  </section>
+
+  <!-- SOUND / RELEASES -->
+  <section class="sound" id="sound">
+    <header class="section-head">
+      <p class="eyebrow">04 — Sound</p>
+      <h2>Releases</h2>
+      <p class="section-sub">Vom Demo bis zur LP. Alles, was diesen Sommer aus München rauskommt.</p>
+    </header>
+
+    <div class="releases">
+      <article class="release">
+        <div class="release__cover" data-cover="r1"><span>014</span></div>
+        <div class="release__info">
+          <h3>Nachtpalast</h3>
+          <p>Kira Nova · LP · 04/26</p>
+        </div>
+        <div class="release__waves" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <a class="release__play" href="#" aria-label="Play">▶</a>
+      </article>
+
+      <article class="release">
+        <div class="release__cover" data-cover="r2"><span>013</span></div>
+        <div class="release__info">
+          <h3>Bavaria Drill, Vol. 2</h3>
+          <p>VEX · EP · 02/26</p>
+        </div>
+        <div class="release__waves" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <a class="release__play" href="#" aria-label="Play">▶</a>
+      </article>
+
+      <article class="release">
+        <div class="release__cover" data-cover="r3"><span>012</span></div>
+        <div class="release__info">
+          <h3>Stachus 4AM</h3>
+          <p>089 BOY · Single · 12/25</p>
+        </div>
+        <div class="release__waves" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <a class="release__play" href="#" aria-label="Play">▶</a>
+      </article>
+
+      <article class="release">
+        <div class="release__cover" data-cover="r4"><span>011</span></div>
+        <div class="release__info">
+          <h3>Honig &amp; Beton</h3>
+          <p>LIRA · EP · 10/25</p>
+        </div>
+        <div class="release__waves" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <a class="release__play" href="#" aria-label="Play">▶</a>
+      </article>
+
+      <article class="release">
+        <div class="release__cover" data-cover="r5"><span>010</span></div>
+        <div class="release__info">
+          <h3>Tape 089</h3>
+          <p>BLOK · Beat-Tape · 08/25</p>
+        </div>
+        <div class="release__waves" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <a class="release__play" href="#" aria-label="Play">▶</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- MOVEMENT / ABOUT (parallax) -->
+  <section class="movement" id="movement">
+    <div class="movement__bg" aria-hidden="true">
+      <span class="big-text" data-parallax="0.2">MUNICH</span>
+      <span class="big-text big-text--alt" data-parallax="-0.15">MOVEMENT</span>
+    </div>
+    <div class="movement__inner">
+      <p class="eyebrow">05 — The Movement</p>
+      <h2 class="movement__h">Mehr als ein Label.<br/>Eine Idee von Stadt.</h2>
+      <div class="movement__cols">
+        <div>
+          <p>
+            MMGA Records ist ein unabhängiges Musiklabel aus München —
+            gegründet 2021 in einem Hinterhof-Studio in Sendling, gewachsen
+            mit jeder Demo, jedem Beat, jeder Nacht. Wir sehen München nicht
+            als Bühne, sondern als Mitspieler: Die Stadt formt den Sound,
+            der Sound formt die Stadt.
+          </p>
+          <p>
+            Wir veröffentlichen, was wir lieben — und arbeiten mit Artists,
+            die mehr wollen als einen Plattendeal. Wir suchen Stimmen, die
+            etwas zu sagen haben. Und Producer, die wissen, dass ein 808
+            nicht alles ist.
+          </p>
+        </div>
+        <div>
+          <ul class="stats">
+            <li><b data-count="14">0</b><span>Releases</span></li>
+            <li><b data-count="5">0</b><span>Artists</span></li>
+            <li><b data-count="089">0</b><span>Heimat-Vorwahl</span></li>
+            <li><b data-count="2021">0</b><span>seit</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOIN -->
+  <section class="join" id="join">
+    <header class="section-head section-head--center">
+      <p class="eyebrow">06 — Open Call</p>
+      <h2>Werde Teil von MMGA.</h2>
+      <p class="section-sub">
+        Wir suchen Producer, Audio-Engineers, Artists, 3D-Artists, Videograf:innen
+        und Menschen, die Bock haben, München groß zu machen.
+      </p>
+    </header>
+
+    <div class="join__grid">
+      <a class="join-card" href="#contact" data-cursor="hover">
+        <span class="join-card__icon">♪</span>
+        <h3>Producer</h3>
+        <p>Du baust Beats, die nicht nach jedem klingen? Schick uns einen Beat-Pack.</p>
+      </a>
+      <a class="join-card" href="#contact" data-cursor="hover">
+        <span class="join-card__icon">≋</span>
+        <h3>Engineer</h3>
+        <p>Mix &amp; Master, Studio-Sessions. Sauberes Ohr, sauberer Workflow.</p>
+      </a>
+      <a class="join-card" href="#contact" data-cursor="hover">
+        <span class="join-card__icon">★</span>
+        <h3>Artist</h3>
+        <p>Du hast was zu sagen? Demo + 3 Sätze über dich. Mehr brauchen wir nicht.</p>
+      </a>
+      <a class="join-card" href="#contact" data-cursor="hover">
+        <span class="join-card__icon">◈</span>
+        <h3>3D / Visuals</h3>
+        <p>Cinema 4D, Blender, AfterEffects — wir suchen Hände, die Welten bauen.</p>
+      </a>
+      <a class="join-card" href="#contact" data-cursor="hover">
+        <span class="join-card__icon">▶</span>
+        <h3>Videografie</h3>
+        <p>Musikvideos, Behind-the-Scenes, Live-Sessions. Bring deinen Look mit.</p>
+      </a>
+      <a class="join-card join-card--mute" href="#contact" data-cursor="hover">
+        <span class="join-card__icon">+</span>
+        <h3>Andere Skills?</h3>
+        <p>Schreib uns trotzdem. Bewegung lebt von vielen Köpfen.</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="contact__inner">
+      <p class="eyebrow">07 — Contact</p>
+      <h2 class="contact__h">
+        Lass uns <em>reden.</em>
+      </h2>
+      <div class="contact__grid">
+        <div>
+          <h4>Demo / A&amp;R</h4>
+          <a href="mailto:demos@mmgarecords.de" data-cursor="hover">demos@mmgarecords.de</a>
+        </div>
+        <div>
+          <h4>Booking</h4>
+          <a href="mailto:booking@mmgarecords.de" data-cursor="hover">booking@mmgarecords.de</a>
+        </div>
+        <div>
+          <h4>Presse</h4>
+          <a href="mailto:press@mmgarecords.de" data-cursor="hover">press@mmgarecords.de</a>
+        </div>
+        <div>
+          <h4>Studio</h4>
+          <p>Plinganserstraße 22<br/>81369 München</p>
+        </div>
+      </div>
+
+      <a href="mailto:hello@mmgarecords.de" class="contact__big" data-cursor="hover">
+        hello@mmgarecords.de →
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer__top">
+    <div class="footer__brand">
+      <h3>MMGA Records</h3>
+      <p>Make Munich Greate Again — independent label, München, seit 2021.</p>
+    </div>
+    <div class="footer__links">
+      <div>
+        <h5>Label</h5>
+        <a href="#manifest">Manifest</a>
+        <a href="#movement">Movement</a>
+        <a href="#join">Join</a>
+      </div>
+      <div>
+        <h5>Music</h5>
+        <a href="#artists">Artists</a>
+        <a href="#sound">Releases</a>
+        <a href="#featured">Featured</a>
+      </div>
+      <div>
+        <h5>Social</h5>
+        <a href="#" data-cursor="hover">Instagram</a>
+        <a href="#" data-cursor="hover">Spotify</a>
+        <a href="#" data-cursor="hover">YouTube</a>
+        <a href="#" data-cursor="hover">TikTok</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <span>© 2026 MMGA Records · München</span>
+    <span><a href="#">Impressum</a> · <a href="#">Datenschutz</a></span>
+    <span>Built with ♥ in 089</span>
+  </div>
+  <div class="footer__big" aria-hidden="true">MMGA</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script src="./assets/js/main.js"></script>
+</body>
+</html>
