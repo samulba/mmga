@@ -69,57 +69,70 @@
 
   <!-- HERO -->
   <section class="hero" id="hero">
+    <!-- animated mesh -->
+    <div class="hero__mesh" aria-hidden="true">
+      <span class="blob blob--a"></span>
+      <span class="blob blob--b"></span>
+      <span class="blob blob--c"></span>
+    </div>
     <div class="hero__grid" aria-hidden="true"></div>
     <div class="hero__noise" aria-hidden="true"></div>
 
-    <div class="hero__meta">
-      <span class="tag">089 · MUNICH</span>
-      <span class="tag tag--dot">EST. 2021</span>
-      <span class="tag">INDEPENDENT</span>
-    </div>
-
-    <h1 class="hero__title">
-      <span class="line"><span class="word" data-split>MAKE</span></span>
-      <span class="line"><span class="word" data-split>MUNICH</span></span>
-      <span class="line line--outline"><span class="word" data-split>GREATE</span></span>
-      <span class="line"><span class="word" data-split>AGAIN.</span></span>
-    </h1>
-
-    <div class="hero__bottom">
-      <p class="hero__lead">
-        Wir sind ein unabhängiges Label aus dem Süden — geboren auf der Straße,
-        gewachsen im Studio. Artist für Artist. Track für Track.
-      </p>
-      <div class="hero__scroll">
-        <span class="dot"></span>
-        <span>scroll</span>
+    <!-- top bar -->
+    <div class="hero__top">
+      <div class="hero__meta">
+        <span class="tag tag--dot">LIVE FROM 089</span>
+        <span class="tag">INDEPENDENT · EST. 2021</span>
+      </div>
+      <div class="hero__clock" aria-hidden="true">
+        <span id="heroClock">--:--:--</span>
+        <span class="hero__clock-sub">MUNICH · 48.137° N</span>
       </div>
     </div>
 
-    <!-- Animated skyline -->
-    <svg class="hero__skyline" viewBox="0 0 1920 220" preserveAspectRatio="none" aria-hidden="true">
-      <defs>
-        <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
-          <stop offset="0%" stop-color="rgba(255,255,255,0)"/>
-          <stop offset="100%" stop-color="rgba(255,255,255,.08)"/>
-        </linearGradient>
-      </defs>
-      <path fill="url(#sky)" stroke="rgba(255,255,255,.35)" stroke-width="1"
-        d="M0,220 L0,170 L90,170 L90,150 L150,150 L150,170 L240,170 L240,120 L260,120 L260,90 L280,90 L280,40 L300,40 L300,90 L320,90 L320,120 L340,120 L340,170 L420,170 L420,140 L500,140 L500,170 L580,170 L580,100 L600,100 L600,60 L620,60 L620,100 L640,100 L640,170 L740,170 L740,150 L820,150 L820,170 L900,170 L900,130 L920,130 L920,80 L940,80 L940,30 L960,30 L960,80 L980,80 L980,130 L1000,130 L1000,170 L1080,170 L1080,150 L1180,150 L1180,170 L1260,170 L1260,120 L1280,120 L1280,90 L1300,90 L1300,170 L1420,170 L1420,140 L1500,140 L1500,170 L1580,170 L1580,100 L1600,100 L1600,60 L1620,60 L1620,170 L1720,170 L1720,150 L1820,150 L1820,170 L1920,170 L1920,220 Z"/>
-    </svg>
-  </section>
+    <!-- title — layered -->
+    <h1 class="hero__title" data-magnet>
+      <span class="line">
+        <span class="layer layer--solid">MAKE</span>
+        <span class="layer layer--stroke" aria-hidden="true">MAKE</span>
+      </span>
+      <span class="line">
+        <span class="layer layer--solid">MUNICH</span>
+        <span class="layer layer--stroke" aria-hidden="true">MUNICH</span>
+      </span>
+      <span class="line line--shift">
+        <span class="layer layer--stroke">GREATE</span>
+        <span class="layer layer--accent" aria-hidden="true">GREATE</span>
+      </span>
+      <span class="line">
+        <span class="layer layer--solid">AGAIN.</span>
+        <span class="layer layer--stroke" aria-hidden="true">AGAIN.</span>
+      </span>
+    </h1>
 
-  <!-- TICKER -->
-  <section class="ticker" aria-hidden="true">
-    <div class="ticker__track">
-      <span>★ NEU · KIRA NOVA — „NACHTPALAST" out now</span>
-      <span>★ Booking open für 2026</span>
-      <span>★ MMGA NIGHT · BLITZ MÜNCHEN · 14.06.</span>
-      <span>★ Demos always welcome</span>
-      <span>★ NEU · KIRA NOVA — „NACHTPALAST" out now</span>
-      <span>★ Booking open für 2026</span>
-      <span>★ MMGA NIGHT · BLITZ MÜNCHEN · 14.06.</span>
-      <span>★ Demos always welcome</span>
+    <!-- bottom: visualizer + lead + scroll -->
+    <div class="hero__bottom">
+      <div class="hero__viz" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <div class="hero__bottom-row">
+        <p class="hero__lead">
+          Ein unabhängiges Label aus München.<br/>
+          Wir bauen die nächste Generation deutschen Sounds —
+          Artist für Artist, Track für Track.
+        </p>
+        <div class="hero__scroll">
+          <span class="dot"></span>
+          <span>scroll for more</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- in-hero marquee -->
+    <div class="hero__marquee" aria-hidden="true">
+      <div class="hero__marquee-track">
+        <span>MUNICH</span><b>★</b><span>MOVEMENT</span><b>★</b><span>SOUND</span><b>★</b><span>MUNICH</span><b>★</b><span>MOVEMENT</span><b>★</b><span>SOUND</span><b>★</b><span>MUNICH</span><b>★</b><span>MOVEMENT</span><b>★</b><span>SOUND</span><b>★</b><span>MUNICH</span><b>★</b><span>MOVEMENT</span><b>★</b><span>SOUND</span><b>★</b>
+      </div>
     </div>
   </section>
 
