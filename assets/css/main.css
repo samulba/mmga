@@ -662,3 +662,128 @@ body[data-page="artist"]{background:#000}
 
 /* Artist-next hover */
 .artist-next a:hover{color:var(--fg-mute)}
+
+/* =========================================================
+   WOW LAYER — big M, dual marquee, roster pin-scroll, glitch
+   ========================================================= */
+
+/* huge background M */
+.hero__bigm{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-48%);
+  z-index:0;font-family:var(--display);
+  font-size:clamp(420px,80vw,1100px);font-weight:500;line-height:.78;
+  letter-spacing:-.08em;
+  color:transparent;-webkit-text-stroke:1px rgba(245,241,234,.08);
+  pointer-events:none;user-select:none;
+  animation:bigm-spin 60s linear infinite;
+}
+@keyframes bigm-spin{to{transform:translate(-50%,-48%) rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.hero__bigm{animation:none}}
+
+/* dual marquee */
+.hero__marquee{padding:10px 0;display:flex;flex-direction:column;gap:6px}
+.hero__marquee-track--reverse{
+  animation-direction:reverse;animation-duration:36s;
+  font-size:.7em;color:var(--fg-mute);
+}
+.hero__marquee-track--reverse b{color:rgba(245,241,234,.25)}
+
+/* muted note in artist bios */
+.muted-note{color:var(--fg-mute);font-size:14px;font-style:italic;margin-top:24px;
+  border-left:2px solid var(--line-2);padding-left:14px}
+
+/* =========================================================
+   ROSTER PIN-SCROLL (Desktop) / Stack (Mobile)
+   ========================================================= */
+.roster{position:relative;background:#0a0a0a;padding-bottom:0}
+.roster-stage{position:relative;height:300vh}              /* triggers pin */
+.roster-track{
+  position:sticky;top:0;height:100vh;height:100svh;
+  display:flex;align-items:stretch;width:max-content;
+  will-change:transform;
+}
+.roster-slide{
+  position:relative;flex:0 0 100vw;height:100vh;height:100svh;
+  display:flex;align-items:center;justify-content:center;
+  padding:120px clamp(28px,6vw,120px) 60px;
+  overflow:hidden;color:var(--fg);
+  background:#0a0a0a;border-right:1px solid var(--line);
+  transition:background .5s ease;
+}
+.roster-slide:last-child{border-right:0}
+
+.roster-slide:before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse at 80% 30%, rgba(245,241,234,.08), transparent 55%),
+             radial-gradient(ellipse at 20% 80%, rgba(245,241,234,.04), transparent 60%);
+  opacity:1;transition:opacity .5s;
+}
+.roster-slide:hover:before{opacity:1.4}
+
+.roster-slide__bgnum{
+  position:absolute;left:-3vw;top:-2vw;z-index:0;
+  font-family:var(--display);font-weight:500;
+  font-size:clamp(380px,60vw,900px);line-height:.78;letter-spacing:-.05em;
+  color:transparent;-webkit-text-stroke:1px rgba(245,241,234,.08);
+  pointer-events:none;user-select:none;
+}
+
+.roster-slide__inner{
+  position:relative;z-index:2;width:100%;max-width:920px;
+  display:flex;flex-direction:column;gap:clamp(20px,3vw,36px);
+}
+.roster-slide__top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;
+  font:500 11px/1 var(--mono);letter-spacing:.28em;text-transform:uppercase;color:var(--fg-mute)}
+.badge{padding:8px 14px;border:1px solid var(--line-2);border-radius:99px;color:var(--fg);
+  background:rgba(0,0,0,.35);backdrop-filter:blur(6px)}
+.roster-slide__num{color:var(--fg-mute)}
+
+.roster-slide__name{
+  font-family:var(--display);font-weight:500;
+  font-size:clamp(80px,15vw,260px);line-height:.86;letter-spacing:-.05em;
+  text-transform:uppercase;
+}
+.roster-slide__bio{
+  max-width:54ch;font-size:clamp(16px,1.3vw,20px);line-height:1.7;color:var(--fg-soft);
+}
+.roster-slide__cta{
+  display:inline-flex;align-items:center;gap:14px;align-self:flex-start;
+  padding:18px 28px;border:1px solid var(--line-2);border-radius:99px;
+  font:500 12px/1 var(--mono);letter-spacing:.22em;text-transform:uppercase;
+  transition:background .35s, color .35s, border-color .35s, padding .4s var(--t2);
+}
+.roster-slide:hover .roster-slide__cta{background:var(--fg);color:#000;border-color:var(--fg);padding-right:36px}
+
+.roster-progress{
+  position:absolute;left:0;right:0;bottom:0;height:2px;background:rgba(245,241,234,.06);z-index:5;
+}
+.roster-progress__bar{display:block;height:100%;width:0;background:var(--fg);transition:width .15s linear}
+
+/* mobile fallback — vertical stack */
+@media (max-width:900px){
+  .roster-stage{height:auto}
+  .roster-track{position:static;height:auto;width:100%;flex-direction:column}
+  .roster-slide{flex:0 0 auto;height:auto;min-height:80vh;width:100%;border-right:0;border-bottom:1px solid var(--line);padding:80px var(--pad)}
+  .roster-slide__bgnum{font-size:60vw}
+  .roster-slide__name{font-size:clamp(72px,18vw,140px)}
+  .roster-progress{display:none}
+}
+
+/* =========================================================
+   GLITCH HOVER on key links
+   ========================================================= */
+.btn--primary,
+.nav__cta,
+.contact__big,
+.roster-slide__cta,
+.artist-next a{
+  position:relative;
+}
+.btn--primary:hover,
+.nav__cta:hover,
+.roster-slide:hover .roster-slide__cta{
+  text-shadow: 1.5px 0 rgba(255,255,255,.45), -1.5px 0 rgba(245,241,234,.45);
+}
+
+/* manifest sub-spacing tighten — looks too sparse w/ new line-height */
+.manifest__text{max-width:24ch}

@@ -244,35 +244,31 @@
     });
   }
 
-  /* ---------- Artist preview ---------- */
-  function initArtistPreview() {
+  /* ---------- Roster horizontal pin-scroll ---------- */
+  function initRosterScroll() {
+    if (!window.gsap || !window.ScrollTrigger) return;
     if (window.matchMedia('(max-width:900px)').matches) return;
-    const preview = document.getElementById('artistPreview');
-    const inner = preview?.querySelector('.artist-preview__inner');
-    const rows = document.querySelectorAll('.artist-row[data-img]');
-    if (!preview || !inner) return;
-    let mx = 0, my = 0, vx = 0, vy = 0;
-    let active = false;
+    const stage = document.getElementById('rosterStage');
+    const track = document.getElementById('rosterTrack');
+    const slides = track ? track.querySelectorAll('.roster-slide') : null;
+    const bar = stage?.querySelector('.roster-progress__bar');
+    if (!stage || !track || !slides || slides.length === 0) return;
 
-    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-    function loop() {
-      vx += (mx - vx) * 0.18;
-      vy += (my - vy) * 0.18;
-      preview.style.transform = `translate(${vx}px, ${vy}px) translate(-50%,-50%) scale(${active ? 1 : 0.9})`;
-      requestAnimationFrame(loop);
-    }
-    loop();
+    const total = slides.length;
+    const distance = (total - 1) * window.innerWidth;
 
-    rows.forEach(row => {
-      row.addEventListener('mouseenter', () => {
-        active = true;
-        preview.classList.add('is-active');
-        inner.setAttribute('data-img', row.dataset.img);
-      });
-      row.addEventListener('mouseleave', () => {
-        active = false;
-        preview.classList.remove('is-active');
-      });
+    gsap.to(track, {
+      x: -distance,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: stage,
+        start: 'top top',
+        end: () => '+=' + distance,
+        pin: track,
+        scrub: 0.6,
+        invalidateOnRefresh: true,
+        onUpdate: self => { if (bar) bar.style.width = (self.progress * 100) + '%'; },
+      },
     });
   }
 
@@ -336,7 +332,7 @@
   /* ---------- Section fade-ups ---------- */
   function autoFadeUp() {
     const targets = document.querySelectorAll(
-      '.section-head, .featured__text > *, .release, .stats li, .join-card, .contact__grid > div, .footer__top, .artist-bio > *, .artist-discog > *'
+      '.section-head, .stats li, .join-card, .contact__grid > div, .footer__top, .artist-bio > *, .artist-discog > *'
     );
     targets.forEach(el => el.classList.add('fade-up'));
   }
@@ -353,7 +349,7 @@
       initHeroMagnet();
       initManifest();
       initTilt();
-      initArtistPreview();
+      initRosterScroll();
       initCounters();
       initParallax();
       initJoinCards();

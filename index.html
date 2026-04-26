@@ -41,7 +41,6 @@
   <nav class="nav__links" aria-label="Hauptnavigation">
     <a href="#manifest">Manifest</a>
     <a href="#artists">Artists</a>
-    <a href="#sound">Sound</a>
     <a href="#movement">Movement</a>
     <a href="#join">Join</a>
     <a href="#contact">Kontakt</a>
@@ -59,7 +58,6 @@
 <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
   <a href="#manifest">Manifest</a>
   <a href="#artists">Artists</a>
-  <a href="#sound">Sound</a>
   <a href="#movement">Movement</a>
   <a href="#join">Join</a>
   <a href="#contact">Kontakt</a>
@@ -69,7 +67,6 @@
 
   <!-- HERO -->
   <section class="hero" id="hero">
-    <!-- animated mesh -->
     <div class="hero__mesh" aria-hidden="true">
       <span class="blob blob--a"></span>
       <span class="blob blob--b"></span>
@@ -77,6 +74,9 @@
     </div>
     <div class="hero__grid" aria-hidden="true"></div>
     <div class="hero__noise" aria-hidden="true"></div>
+
+    <!-- giant background M -->
+    <div class="hero__bigm" aria-hidden="true">M</div>
 
     <!-- top bar -->
     <div class="hero__top">
@@ -128,10 +128,13 @@
       </div>
     </div>
 
-    <!-- in-hero marquee -->
+    <!-- in-hero marquees, two layers, opposite directions -->
     <div class="hero__marquee" aria-hidden="true">
       <div class="hero__marquee-track">
-        <span>MUNICH</span><b>★</b><span>MOVEMENT</span><b>★</b><span>SOUND</span><b>★</b><span>MUNICH</span><b>★</b><span>MOVEMENT</span><b>★</b><span>SOUND</span><b>★</b><span>MUNICH</span><b>★</b><span>MOVEMENT</span><b>★</b><span>SOUND</span><b>★</b><span>MUNICH</span><b>★</b><span>MOVEMENT</span><b>★</b><span>SOUND</span><b>★</b>
+        <span>MAKE MUNICH GREATE AGAIN</span><b>★</b><span>089</span><b>★</b><span>INDEPENDENT</span><b>★</b><span>MOVEMENT</span><b>★</b><span>MAKE MUNICH GREATE AGAIN</span><b>★</b><span>089</span><b>★</b><span>INDEPENDENT</span><b>★</b><span>MOVEMENT</span><b>★</b><span>MAKE MUNICH GREATE AGAIN</span><b>★</b><span>089</span><b>★</b>
+      </div>
+      <div class="hero__marquee-track hero__marquee-track--reverse">
+        <span>LYLONE</span><b>·</b><span>ZO68</span><b>·</b><span>DEEAXEE</span><b>·</b><span>MMGA RECORDS</span><b>·</b><span>LYLONE</span><b>·</b><span>ZO68</span><b>·</b><span>DEEAXEE</span><b>·</b><span>MMGA RECORDS</span><b>·</b><span>LYLONE</span><b>·</b><span>ZO68</span><b>·</b><span>DEEAXEE</span><b>·</b><span>MMGA RECORDS</span><b>·</b>
       </div>
     </div>
   </section>
@@ -163,171 +166,80 @@
     </div>
   </section>
 
-  <!-- FEATURED RELEASE -->
-  <section class="featured" id="featured">
-    <div class="featured__inner">
-      <div class="featured__art" data-tilt>
-        <div class="featured__cover">
-          <div class="featured__cover-inner">
-            <span class="featured__cover-tag">MMGA·014</span>
-            <h3 class="featured__cover-title">NACHT<br/>PALAST</h3>
-            <p class="featured__cover-artist">KIRA NOVA</p>
-            <div class="featured__cover-grid"></div>
-          </div>
-        </div>
-      </div>
-      <div class="featured__text">
-        <p class="eyebrow">02 — Featured Release</p>
-        <h2>NACHTPALAST</h2>
-        <p class="featured__byline">KIRA NOVA · LP · 11 Tracks · April 2026</p>
-        <p class="featured__desc">
-          Zwischen Schwabinger Neonlicht und Glockenbach-Beat — KIRA NOVAs Debüt
-          „Nachtpalast" ist eine Liebeserklärung an die nächtliche Seite Münchens.
-          Produziert im MMGA-Studio, gemastert in Berlin.
-        </p>
-        <ul class="tracklist">
-          <li><span>01</span><span>Isarflimmern</span><time>3:42</time></li>
-          <li><span>02</span><span>Nachtpalast</span><time>4:18</time></li>
-          <li><span>03</span><span>U6 nach Hause</span><time>3:11</time></li>
-          <li><span>04</span><span>Föhnfieber</span><time>2:58</time></li>
-          <li><span>05</span><span>Glockenbach</span><time>3:33</time></li>
-          <li><span>06</span><span>Englischer Garten 4AM</span><time>4:41</time></li>
-        </ul>
-        <div class="featured__cta">
-          <a class="btn btn--primary" href="#" data-cursor="hover">Auf Spotify hören →</a>
-          <a class="btn btn--ghost" href="./artists/kira-nova.html" data-cursor="hover">Artist Profil</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ARTISTS -->
-  <section class="artists" id="artists">
+  <!-- ARTISTS — Horizontal Pin-Scroll Showcase -->
+  <section class="roster" id="artists">
     <header class="section-head">
-      <p class="eyebrow">03 — Roster</p>
+      <p class="eyebrow">02 — Roster</p>
       <h2>Artists</h2>
       <p class="section-sub">
-        Fünf Stimmen, eine Stadt. Klick dich rein.
+        Drei Stimmen, eine Stadt. Movement seit 2021.
       </p>
     </header>
 
-    <ul class="artist-list" id="artistList">
-      <li class="artist-row" data-artist="kira-nova" data-img="kira">
-        <a href="./artists/kira-nova.html" data-cursor="hover">
-          <span class="artist-row__num">01</span>
-          <span class="artist-row__name">Kira Nova</span>
-          <span class="artist-row__tag">Pop · Electronic</span>
-          <span class="artist-row__arrow">→</span>
+    <div class="roster-stage" id="rosterStage">
+      <div class="roster-track" id="rosterTrack">
+
+        <a class="roster-slide" href="./lylone/" data-cursor="hover" data-bg="lylone">
+          <div class="roster-slide__bgnum" aria-hidden="true">01</div>
+          <div class="roster-slide__inner">
+            <div class="roster-slide__top">
+              <span class="badge">Founder · Owner</span>
+              <span class="roster-slide__num">01 / 03</span>
+            </div>
+            <h3 class="roster-slide__name">Lylone</h3>
+            <p class="roster-slide__bio">
+              Gründer von MMGA — der Kopf hinter der Idee, München eine
+              eigene Stimme zu geben.
+            </p>
+            <span class="roster-slide__cta">
+              <span>Profil ansehen</span>
+              <span aria-hidden="true">→</span>
+            </span>
+          </div>
         </a>
-      </li>
-      <li class="artist-row" data-artist="vex" data-img="vex">
-        <a href="./artists/vex.html" data-cursor="hover">
-          <span class="artist-row__num">02</span>
-          <span class="artist-row__name">VEX</span>
-          <span class="artist-row__tag">Rap · Drill</span>
-          <span class="artist-row__arrow">→</span>
+
+        <a class="roster-slide" href="./zo68/" data-cursor="hover" data-bg="zo68">
+          <div class="roster-slide__bgnum" aria-hidden="true">02</div>
+          <div class="roster-slide__inner">
+            <div class="roster-slide__top">
+              <span class="badge">Artist</span>
+              <span class="roster-slide__num">02 / 03</span>
+            </div>
+            <h3 class="roster-slide__name">Zo68</h3>
+            <p class="roster-slide__bio">
+              Eine der prägenden Stimmen im aktuellen MMGA-Roster.
+              München, 089, 24/7.
+            </p>
+            <span class="roster-slide__cta">
+              <span>Profil ansehen</span>
+              <span aria-hidden="true">→</span>
+            </span>
+          </div>
         </a>
-      </li>
-      <li class="artist-row" data-artist="089-boy" data-img="boy">
-        <a href="./artists/089-boy.html" data-cursor="hover">
-          <span class="artist-row__num">03</span>
-          <span class="artist-row__name">089 BOY</span>
-          <span class="artist-row__tag">Hip-Hop · Trap</span>
-          <span class="artist-row__arrow">→</span>
+
+        <a class="roster-slide" href="./deeaxee/" data-cursor="hover" data-bg="deeaxee">
+          <div class="roster-slide__bgnum" aria-hidden="true">03</div>
+          <div class="roster-slide__inner">
+            <div class="roster-slide__top">
+              <span class="badge">Artist</span>
+              <span class="roster-slide__num">03 / 03</span>
+            </div>
+            <h3 class="roster-slide__name">Deeaxee</h3>
+            <p class="roster-slide__bio">
+              Teil der MMGA-Familie. Eigene Lane, eigener Sound.
+            </p>
+            <span class="roster-slide__cta">
+              <span>Profil ansehen</span>
+              <span aria-hidden="true">→</span>
+            </span>
+          </div>
         </a>
-      </li>
-      <li class="artist-row" data-artist="lira" data-img="lira">
-        <a href="./artists/lira.html" data-cursor="hover">
-          <span class="artist-row__num">04</span>
-          <span class="artist-row__name">LIRA</span>
-          <span class="artist-row__tag">R&amp;B · Soul</span>
-          <span class="artist-row__arrow">→</span>
-        </a>
-      </li>
-      <li class="artist-row" data-artist="blok" data-img="blok">
-        <a href="./artists/blok.html" data-cursor="hover">
-          <span class="artist-row__num">05</span>
-          <span class="artist-row__name">BLOK</span>
-          <span class="artist-row__tag">Producer · Beats</span>
-          <span class="artist-row__arrow">→</span>
-        </a>
-      </li>
-    </ul>
 
-    <!-- floating preview -->
-    <div class="artist-preview" id="artistPreview" aria-hidden="true">
-      <div class="artist-preview__inner" data-img="kira"></div>
-    </div>
-  </section>
+      </div>
 
-  <!-- SOUND / RELEASES -->
-  <section class="sound" id="sound">
-    <header class="section-head">
-      <p class="eyebrow">04 — Sound</p>
-      <h2>Releases</h2>
-      <p class="section-sub">Vom Demo bis zur LP. Alles, was diesen Sommer aus München rauskommt.</p>
-    </header>
-
-    <div class="releases">
-      <article class="release">
-        <div class="release__cover" data-cover="r1"><span>014</span></div>
-        <div class="release__info">
-          <h3>Nachtpalast</h3>
-          <p>Kira Nova · LP · 04/26</p>
-        </div>
-        <div class="release__waves" aria-hidden="true">
-          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-        </div>
-        <a class="release__play" href="#" aria-label="Play">▶</a>
-      </article>
-
-      <article class="release">
-        <div class="release__cover" data-cover="r2"><span>013</span></div>
-        <div class="release__info">
-          <h3>Bavaria Drill, Vol. 2</h3>
-          <p>VEX · EP · 02/26</p>
-        </div>
-        <div class="release__waves" aria-hidden="true">
-          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-        </div>
-        <a class="release__play" href="#" aria-label="Play">▶</a>
-      </article>
-
-      <article class="release">
-        <div class="release__cover" data-cover="r3"><span>012</span></div>
-        <div class="release__info">
-          <h3>Stachus 4AM</h3>
-          <p>089 BOY · Single · 12/25</p>
-        </div>
-        <div class="release__waves" aria-hidden="true">
-          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-        </div>
-        <a class="release__play" href="#" aria-label="Play">▶</a>
-      </article>
-
-      <article class="release">
-        <div class="release__cover" data-cover="r4"><span>011</span></div>
-        <div class="release__info">
-          <h3>Honig &amp; Beton</h3>
-          <p>LIRA · EP · 10/25</p>
-        </div>
-        <div class="release__waves" aria-hidden="true">
-          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-        </div>
-        <a class="release__play" href="#" aria-label="Play">▶</a>
-      </article>
-
-      <article class="release">
-        <div class="release__cover" data-cover="r5"><span>010</span></div>
-        <div class="release__info">
-          <h3>Tape 089</h3>
-          <p>BLOK · Beat-Tape · 08/25</p>
-        </div>
-        <div class="release__waves" aria-hidden="true">
-          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-        </div>
-        <a class="release__play" href="#" aria-label="Play">▶</a>
-      </article>
+      <div class="roster-progress" aria-hidden="true">
+        <span class="roster-progress__bar"></span>
+      </div>
     </div>
   </section>
 
@@ -338,7 +250,7 @@
       <span class="big-text big-text--alt" data-parallax="-0.15">MOVEMENT</span>
     </div>
     <div class="movement__inner">
-      <p class="eyebrow">05 — The Movement</p>
+      <p class="eyebrow">03 — The Movement</p>
       <h2 class="movement__h">Mehr als ein Label.<br/>Eine Idee von Stadt.</h2>
       <div class="movement__cols">
         <div>
@@ -358,10 +270,10 @@
         </div>
         <div>
           <ul class="stats">
-            <li><b data-count="14">0</b><span>Releases</span></li>
-            <li><b data-count="5">0</b><span>Artists</span></li>
+            <li><b data-count="3">0</b><span>Artists</span></li>
             <li><b data-count="089">0</b><span>Heimat-Vorwahl</span></li>
             <li><b data-count="2021">0</b><span>seit</span></li>
+            <li><b data-count="01">0</b><span>Stadt</span></li>
           </ul>
         </div>
       </div>
@@ -371,7 +283,7 @@
   <!-- JOIN -->
   <section class="join" id="join">
     <header class="section-head section-head--center">
-      <p class="eyebrow">06 — Open Call</p>
+      <p class="eyebrow">04 — Open Call</p>
       <h2>Werde Teil von MMGA.</h2>
       <p class="section-sub">
         Wir suchen Producer, Audio-Engineers, Artists, 3D-Artists, Videograf:innen
@@ -416,7 +328,7 @@
   <!-- CONTACT -->
   <section class="contact" id="contact">
     <div class="contact__inner">
-      <p class="eyebrow">07 — Contact</p>
+      <p class="eyebrow">05 — Contact</p>
       <h2 class="contact__h">
         Lass uns <em>reden.</em>
       </h2>
@@ -461,10 +373,10 @@
         <a href="#join">Join</a>
       </div>
       <div>
-        <h5>Music</h5>
-        <a href="#artists">Artists</a>
-        <a href="#sound">Releases</a>
-        <a href="#featured">Featured</a>
+        <h5>Roster</h5>
+        <a href="./lylone/">Lylone</a>
+        <a href="./zo68/">Zo68</a>
+        <a href="./deeaxee/">Deeaxee</a>
       </div>
       <div>
         <h5>Social</h5>
