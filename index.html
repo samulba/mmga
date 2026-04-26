@@ -39,16 +39,16 @@
     <span>MMGA<small>Records</small></span>
   </a>
   <nav class="nav__links" aria-label="Hauptnavigation">
-    <a href="#manifest">Manifest</a>
+    <a href="./about/">About</a>
     <a href="#artists">Artists</a>
-    <a href="#movement">Movement</a>
-    <a href="#join">Join</a>
-    <a href="#contact">Kontakt</a>
+    <a href="./news/">News</a>
+    <a href="./demos/">Demos</a>
+    <a href="./kontakt/">Kontakt</a>
   </nav>
-  <button class="nav__cta" data-cursor="hover">
+  <a class="nav__cta" href="./demos/" data-cursor="hover">
     <span>Demo senden</span>
     <span aria-hidden="true">→</span>
-  </button>
+  </a>
   <button class="nav__burger" id="burger" aria-label="Menü öffnen" aria-expanded="false">
     <span></span><span></span>
   </button>
@@ -56,11 +56,11 @@
 
 <!-- Mobile menu -->
 <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-  <a href="#manifest">Manifest</a>
+  <a href="./about/">About</a>
   <a href="#artists">Artists</a>
-  <a href="#movement">Movement</a>
-  <a href="#join">Join</a>
-  <a href="#contact">Kontakt</a>
+  <a href="./news/">News</a>
+  <a href="./demos/">Demos</a>
+  <a href="./kontakt/">Kontakt</a>
 </div>
 
 <main id="top">
@@ -173,98 +173,42 @@
     </div>
   </section>
 
-  <!-- ARTISTS — Sticky Stack -->
+  <!-- ARTISTS — clean 3-card row -->
   <section class="roster" id="artists">
     <header class="section-head">
       <p class="eyebrow">02 — Roster</p>
       <h2>Artists</h2>
-      <p class="section-sub">
-        Drei Stimmen, eine Stadt. Scroll dich durch.
-      </p>
+      <p class="section-sub">Drei Stimmen, eine Stadt.</p>
     </header>
 
-    <div class="roster-stack">
-
-      <article class="roster-card" data-card="1">
-        <a class="roster-card__inner" href="./lylone/" data-cursor="hover">
-          <span class="roster-card__bgnum" aria-hidden="true">01</span>
-          <div class="roster-card__top">
-            <span class="badge">Founder · Owner</span>
-            <span class="roster-card__index">01 / 03</span>
-          </div>
-          <div class="roster-card__middle">
-            <h3 class="roster-card__name">
-              <span class="rcn-layer rcn--blue" aria-hidden="true">Lylone</span>
-              <span class="rcn-layer rcn--red" aria-hidden="true">Lylone</span>
-              <span class="rcn-layer rcn--solid">Lylone</span>
-            </h3>
-          </div>
-          <div class="roster-card__bottom">
-            <p class="roster-card__bio">
-              Gründer von MMGA — der Kopf hinter der Idee, München eine
-              eigene Stimme zu geben.
-            </p>
-            <span class="roster-card__cta">
-              <span>Profil ansehen</span>
-              <span aria-hidden="true">→</span>
-            </span>
-          </div>
-        </a>
-      </article>
-
-      <article class="roster-card" data-card="2">
-        <a class="roster-card__inner" href="./zo68/" data-cursor="hover">
-          <span class="roster-card__bgnum" aria-hidden="true">02</span>
-          <div class="roster-card__top">
-            <span class="badge">Artist</span>
-            <span class="roster-card__index">02 / 03</span>
-          </div>
-          <div class="roster-card__middle">
-            <h3 class="roster-card__name">
-              <span class="rcn-layer rcn--blue" aria-hidden="true">Zo68</span>
-              <span class="rcn-layer rcn--red" aria-hidden="true">Zo68</span>
-              <span class="rcn-layer rcn--solid">Zo68</span>
-            </h3>
-          </div>
-          <div class="roster-card__bottom">
-            <p class="roster-card__bio">
-              Eine der prägenden Stimmen im aktuellen MMGA-Roster.
-              München, 089, 24/7.
-            </p>
-            <span class="roster-card__cta">
-              <span>Profil ansehen</span>
-              <span aria-hidden="true">→</span>
-            </span>
-          </div>
-        </a>
-      </article>
-
-      <article class="roster-card" data-card="3">
-        <a class="roster-card__inner" href="./deeaxee/" data-cursor="hover">
-          <span class="roster-card__bgnum" aria-hidden="true">03</span>
-          <div class="roster-card__top">
-            <span class="badge">Artist</span>
-            <span class="roster-card__index">03 / 03</span>
-          </div>
-          <div class="roster-card__middle">
-            <h3 class="roster-card__name">
-              <span class="rcn-layer rcn--blue" aria-hidden="true">Deeaxee</span>
-              <span class="rcn-layer rcn--red" aria-hidden="true">Deeaxee</span>
-              <span class="rcn-layer rcn--solid">Deeaxee</span>
-            </h3>
-          </div>
-          <div class="roster-card__bottom">
-            <p class="roster-card__bio">
-              Teil der MMGA-Familie. Eigene Lane, eigener Sound.
-            </p>
-            <span class="roster-card__cta">
-              <span>Profil ansehen</span>
-              <span aria-hidden="true">→</span>
-            </span>
-          </div>
-        </a>
-      </article>
-
+    <div class="roster-grid">
+      <a class="rcard" href="./lylone/" data-cursor="hover">
+        <span class="rcard__num">01</span>
+        <div class="rcard__body">
+          <span class="rcard__badge">Founder</span>
+          <h3 class="rcard__name">Lylone</h3>
+          <p class="rcard__bio">Gründer von MMGA. Der Kopf hinter dem Movement.</p>
+        </div>
+        <span class="rcard__arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="rcard" href="./zo68/" data-cursor="hover">
+        <span class="rcard__num">02</span>
+        <div class="rcard__body">
+          <span class="rcard__badge">Artist</span>
+          <h3 class="rcard__name">Zo68</h3>
+          <p class="rcard__bio">Prägende Stimme im aktuellen Roster.</p>
+        </div>
+        <span class="rcard__arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="rcard" href="./deeaxee/" data-cursor="hover">
+        <span class="rcard__num">03</span>
+        <div class="rcard__body">
+          <span class="rcard__badge">Artist</span>
+          <h3 class="rcard__name">Deeaxee</h3>
+          <p class="rcard__bio">Eigene Lane, eigener Sound. Teil der Familie.</p>
+        </div>
+        <span class="rcard__arrow" aria-hidden="true">→</span>
+      </a>
     </div>
   </section>
 
@@ -393,9 +337,10 @@
     <div class="footer__links">
       <div>
         <h5>Label</h5>
-        <a href="#manifest">Manifest</a>
-        <a href="#movement">Movement</a>
-        <a href="#join">Join</a>
+        <a href="./about/">About</a>
+        <a href="./news/">News</a>
+        <a href="./demos/">Demos</a>
+        <a href="./kontakt/">Kontakt</a>
       </div>
       <div>
         <h5>Roster</h5>

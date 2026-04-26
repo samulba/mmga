@@ -270,36 +270,7 @@
     });
   }
 
-  /* ---------- Roster sticky-stack recede ---------- */
-  function initRosterStack() {
-    if (!window.gsap || !window.ScrollTrigger) return;
-    if (window.matchMedia('(max-width:900px)').matches) return;
-    const cards = document.querySelectorAll('.roster-card');
-    if (cards.length < 2) return;
-
-    cards.forEach((card, i) => {
-      if (i === cards.length - 1) return;     /* last stays full */
-      const inner = card.querySelector('.roster-card__inner');
-      const next = cards[i + 1];
-      if (!inner || !next) return;
-
-      gsap.to(inner, {
-        scale: 0.92,
-        y: -30,
-        opacity: 0.35,
-        filter: 'blur(4px)',
-        ease: 'none',
-        scrollTrigger: {
-          trigger: next,
-          start: 'top bottom',
-          end: 'top top',
-          scrub: 0.6,
-        },
-      });
-    });
-
-    window.addEventListener('resize', () => window.ScrollTrigger.refresh(), { passive: true });
-  }
+  /* (sticky-stack removed — roster is now a clean grid) */
 
   /* ---------- Number counter ---------- */
   function initCounters() {
@@ -378,7 +349,6 @@
       initHeroMagnet();
       initManifest();
       initTilt();
-      initRosterStack();
       initCounters();
       initParallax();
       initJoinCards();

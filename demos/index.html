@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Demos — MMGA Records</title>
+<meta name="description" content="Demo bei MMGA Records einreichen — Open Call für Artists, Producer, Engineers, Visuals." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/css/main.css" />
+</head>
+<body data-page="sub">
+
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+<div class="cursor cursor--ring" id="cursorRing" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <a class="nav__logo" href="../index.html">
+    <svg viewBox="0 0 64 64" width="36" height="36" aria-hidden="true">
+      <circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" stroke-width="2"/>
+      <text x="32" y="40" text-anchor="middle" font-family="Space Grotesk" font-size="22" fill="currentColor">M</text>
+    </svg>
+    <span>MMGA<small>Records</small></span>
+  </a>
+  <nav class="nav__links">
+    <a href="../about/">About</a>
+    <a href="../index.html#artists">Artists</a>
+    <a href="../news/">News</a>
+    <a href="../demos/">Demos</a>
+    <a href="../kontakt/">Kontakt</a>
+  </nav>
+  <a class="nav__cta" href="../kontakt/" data-cursor="hover"><span>Kontakt</span><span>→</span></a>
+</header>
+
+<main>
+  <section class="sub-hero">
+    <p class="sub-hero__crumb"><a href="../index.html">MMGA</a> &nbsp;/&nbsp; Demos</p>
+    <h1 class="sub-hero__title">Schick&nbsp;dein Demo.</h1>
+    <p class="sub-hero__lead">
+      Wir hören jedes Demo. Versprochen. Wenn dein Sound zu uns passt,
+      melden wir uns innerhalb von 14 Tagen.
+    </p>
+  </section>
+
+  <section class="sub-section">
+    <h2>Wer kann einreichen</h2>
+    <p>
+      <strong>Artists</strong> aus München oder mit klarem München-Bezug.
+      Genre offen — Rap, Pop, R&amp;B, Electronic, Indie, alles.
+    </p>
+    <p>
+      <strong>Producer &amp; Engineer</strong> für In-house-Sessions
+      und Beat-Submissions.
+    </p>
+    <p>
+      <strong>Videograf:innen, 3D-Artists, Photograph:innen</strong> für
+      Visuals, Cover, Musikvideos.
+    </p>
+  </section>
+
+  <section class="sub-section">
+    <h2>Was wir brauchen</h2>
+    <p>
+      <strong>1—3 Tracks</strong> als private Spotify-, SoundCloud- oder Drive-Links.
+      Keine Anhänge.
+    </p>
+    <p>
+      <strong>Drei Sätze</strong> über dich. Wer bist du, was machst du,
+      was willst du. Mehr nicht.
+    </p>
+    <p>
+      <strong>Optional:</strong> Social-Media-Links, falls vorhanden.
+    </p>
+  </section>
+
+  <section class="sub-section">
+    <h2>Einreichen</h2>
+    <form class="demo-form" onsubmit="event.preventDefault();alert('Danke! Wir hören rein und melden uns.');">
+      <div>
+        <label for="name">Name / Artist-Name</label>
+        <input id="name" type="text" required placeholder="z.B. LYLONE" />
+      </div>
+      <div>
+        <label for="email">E-Mail</label>
+        <input id="email" type="email" required placeholder="du@example.com" />
+      </div>
+      <div>
+        <label for="role">Du bist…</label>
+        <input id="role" type="text" placeholder="Artist, Producer, Engineer, Visuals…" />
+      </div>
+      <div>
+        <label for="links">Demo-Links</label>
+        <textarea id="links" required placeholder="Spotify-, SoundCloud- oder Drive-Links, eine pro Zeile"></textarea>
+      </div>
+      <div>
+        <label for="bio">Drei Sätze über dich</label>
+        <textarea id="bio" required placeholder="Wer du bist, was du machst, was du willst."></textarea>
+      </div>
+      <button type="submit">Demo senden →</button>
+    </form>
+    <p style="margin-top:24px;color:var(--fg-mute);font-size:14px">
+      Oder schick alles direkt per Mail an
+      <a href="mailto:demos@mmgarecords.de" style="color:var(--red)">demos@mmgarecords.de</a>.
+    </p>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer__top">
+    <div class="footer__brand"><h3>MMGA Records</h3><p>Make Munich Greate Again — independent label, München, seit 2021.</p></div>
+    <div class="footer__links">
+      <div><h5>Label</h5><a href="../about/">About</a><a href="../news/">News</a><a href="../demos/">Demos</a><a href="../kontakt/">Kontakt</a></div>
+      <div><h5>Roster</h5><a href="../lylone/">Lylone</a><a href="../zo68/">Zo68</a><a href="../deeaxee/">Deeaxee</a></div>
+      <div><h5>Social</h5><a href="#">Instagram</a><a href="#">Spotify</a><a href="#">YouTube</a></div>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <span>© 2026 MMGA Records · München</span>
+    <span><a href="#">Impressum</a> · <a href="#">Datenschutz</a></span>
+    <span>Built with ♥ in 089</span>
+  </div>
+  <div class="footer__big" aria-hidden="true">MMGA</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>
