@@ -243,38 +243,34 @@
     });
   }
 
-  /* ---------- Roster horizontal pin-scroll ---------- */
-  function initRosterScroll() {
+  /* ---------- Roster sticky-stack recede ---------- */
+  function initRosterStack() {
     if (!window.gsap || !window.ScrollTrigger) return;
     if (window.matchMedia('(max-width:900px)').matches) return;
-    const stage = document.getElementById('rosterStage');
-    const track = document.getElementById('rosterTrack');
-    const slides = track ? track.querySelectorAll('.roster-slide') : null;
-    const bar = stage?.querySelector('.roster-progress__bar');
-    if (!stage || !track || !slides || slides.length === 0) return;
+    const cards = document.querySelectorAll('.roster-card');
+    if (cards.length < 2) return;
 
-    const total = slides.length;
-    /* keep stage tall enough to host the full pin */
-    stage.style.height = (total * 100) + 'vh';
+    cards.forEach((card, i) => {
+      if (i === cards.length - 1) return;     /* last stays full */
+      const inner = card.querySelector('.roster-card__inner');
+      const next = cards[i + 1];
+      if (!inner || !next) return;
 
-    const getDistance = () => track.scrollWidth - window.innerWidth;
-
-    gsap.to(track, {
-      x: () => -getDistance(),
-      ease: 'none',
-      scrollTrigger: {
-        trigger: stage,
-        start: 'top top',
-        end: () => '+=' + getDistance(),
-        pin: track,
-        scrub: 0.6,
-        invalidateOnRefresh: true,
-        anticipatePin: 1,
-        onUpdate: self => { if (bar) bar.style.width = (self.progress * 100) + '%'; },
-      },
+      gsap.to(inner, {
+        scale: 0.92,
+        y: -30,
+        opacity: 0.35,
+        filter: 'blur(4px)',
+        ease: 'none',
+        scrollTrigger: {
+          trigger: next,
+          start: 'top bottom',
+          end: 'top top',
+          scrub: 0.6,
+        },
+      });
     });
 
-    /* refresh on resize so the math stays right */
     window.addEventListener('resize', () => window.ScrollTrigger.refresh(), { passive: true });
   }
 
@@ -355,7 +351,7 @@
       initHeroMagnet();
       initManifest();
       initTilt();
-      initRosterScroll();
+      initRosterStack();
       initCounters();
       initParallax();
       initJoinCards();

@@ -716,99 +716,146 @@ body[data-page="artist"]{background:#000}
   border-left:2px solid var(--line-2);padding-left:14px}
 
 /* =========================================================
-   ROSTER PIN-SCROLL (Desktop) / Stack (Mobile)
+   ROSTER — Sticky Stack (cards stack on scroll)
    ========================================================= */
 .roster{position:relative;background:#0a0a0a;padding-bottom:0}
-.roster-stage{position:relative;height:300vh}              /* triggers pin */
-.roster-track{
-  position:sticky;top:0;height:100vh;height:100svh;
-  display:flex;align-items:stretch;width:max-content;
-  will-change:transform;
-}
-.roster-slide{
-  position:relative;flex:0 0 100vw;height:100vh;height:100svh;
-  display:flex;align-items:center;justify-content:center;
-  padding:120px clamp(28px,6vw,120px) 60px;
-  overflow:hidden;color:var(--fg);
-  background:#0a0a0a;border-right:1px solid var(--line);
-  transition:background .5s ease;
-}
-.roster-slide:last-child{border-right:0}
+.roster-stack{position:relative}
 
-.roster-slide:before{
+.roster-card{
+  position:sticky;top:0;
+  height:100vh;height:100svh;
+  display:flex;
+  isolation:isolate;
+}
+.roster-card[data-card="1"]{z-index:1}
+.roster-card[data-card="2"]{z-index:2}
+.roster-card[data-card="3"]{z-index:3}
+
+.roster-card__inner{
+  position:relative;display:flex;flex-direction:column;justify-content:space-between;
+  width:100%;height:100%;
+  padding:clamp(80px,9vh,140px) clamp(24px,5vw,90px) clamp(40px,5vh,80px);
+  background:#0a0a0a;
+  color:var(--fg);
+  overflow:hidden;
+  border-top:1px solid var(--line);
+  transition:transform .6s var(--t2);
+  cursor:pointer;
+}
+.roster-card[data-card="1"] .roster-card__inner{
+  background:radial-gradient(ellipse at 75% 20%, rgba(191,10,48,.18), transparent 55%),
+             radial-gradient(ellipse at 20% 80%, rgba(0,40,104,.14), transparent 60%),
+             #0a0a0a;
+  border-top:0;
+}
+.roster-card[data-card="2"] .roster-card__inner{
+  background:radial-gradient(ellipse at 25% 25%, rgba(0,40,104,.22), transparent 55%),
+             radial-gradient(ellipse at 80% 75%, rgba(245,241,234,.05), transparent 60%),
+             #0a0a0a;
+}
+.roster-card[data-card="3"] .roster-card__inner{
+  background:radial-gradient(ellipse at 50% 50%, rgba(245,241,234,.06), transparent 60%),
+             radial-gradient(ellipse at 90% 10%, rgba(191,10,48,.14), transparent 55%),
+             #0a0a0a;
+}
+
+/* subtle stripes on every card (US-flag echo) */
+.roster-card__inner:before{
   content:"";position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(ellipse at 80% 30%, rgba(245,241,234,.08), transparent 55%),
-             radial-gradient(ellipse at 20% 80%, rgba(245,241,234,.04), transparent 60%);
-  opacity:1;transition:opacity .5s;
+  background:repeating-linear-gradient(
+    135deg,
+    transparent 0,
+    transparent 100px,
+    rgba(245,241,234,.025) 100px,
+    rgba(245,241,234,.025) 160px
+  );
+  z-index:0;
 }
-.roster-slide:hover:before{opacity:1.4}
 
-.roster-slide__bgnum{
-  position:absolute;left:-3vw;top:-2vw;z-index:0;
+/* HUGE bg numeral */
+.roster-card__bgnum{
+  position:absolute;right:-3vw;top:-3vw;
+  z-index:1;
   font-family:var(--display);font-weight:500;
-  font-size:clamp(380px,60vw,900px);line-height:.78;letter-spacing:-.05em;
-  color:transparent;-webkit-text-stroke:1px rgba(245,241,234,.08);
+  font-size:clamp(420px,55vw,820px);line-height:.78;letter-spacing:-.05em;
+  color:transparent;-webkit-text-stroke:1px rgba(245,241,234,.10);
   pointer-events:none;user-select:none;
 }
 
-.roster-slide__inner{
-  position:relative;z-index:2;width:100%;max-width:920px;
-  display:flex;flex-direction:column;gap:clamp(20px,3vw,36px);
+.roster-card__top{
+  position:relative;z-index:2;
+  display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;
+  font:500 11px/1 var(--mono);letter-spacing:.28em;text-transform:uppercase;color:var(--fg-mute);
 }
-.roster-slide__top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;
-  font:500 11px/1 var(--mono);letter-spacing:.28em;text-transform:uppercase;color:var(--fg-mute)}
 .badge{padding:8px 14px;border:1px solid var(--line-2);border-radius:99px;color:var(--fg);
   background:rgba(0,0,0,.35);backdrop-filter:blur(6px)}
-.roster-slide__num{color:var(--fg-mute)}
+.roster-card__index{color:var(--fg-mute)}
 
-.roster-slide__name{
+.roster-card__middle{
+  position:relative;z-index:2;display:flex;align-items:center;flex:1;
+  margin:clamp(20px,3vh,40px) 0;
+}
+.roster-card__name{
+  position:relative;display:inline-block;
   font-family:var(--display);font-weight:500;
-  font-size:clamp(80px,15vw,260px);line-height:.86;letter-spacing:-.05em;
+  font-size:clamp(96px,17vw,280px);line-height:.86;letter-spacing:-.05em;
   text-transform:uppercase;
+  margin:0;
 }
-.roster-slide__bio{
-  max-width:54ch;font-size:clamp(16px,1.3vw,20px);line-height:1.7;color:var(--fg-soft);
+.rcn-layer{display:block;line-height:.86;font-weight:inherit}
+.rcn--solid{position:relative;z-index:3;color:var(--fg)}
+.rcn--red{position:absolute;left:0;top:0;color:var(--red);
+  transform:translate(6px,0) skewX(-2deg);z-index:2;mix-blend-mode:screen;filter:blur(.3px);
+  pointer-events:none}
+.rcn--blue{position:absolute;left:0;top:0;color:var(--blue);
+  transform:translate(-6px,0) skewX(2deg);z-index:1;mix-blend-mode:screen;filter:blur(.3px);
+  pointer-events:none}
+
+.roster-card__bottom{
+  position:relative;z-index:2;
+  display:flex;justify-content:space-between;align-items:flex-end;
+  gap:32px;flex-wrap:wrap;
 }
-.roster-slide__cta{
-  display:inline-flex;align-items:center;gap:14px;align-self:flex-start;
+.roster-card__bio{
+  max-width:48ch;font-size:clamp(16px,1.3vw,20px);line-height:1.7;color:var(--fg-soft);
+}
+.roster-card__cta{
+  display:inline-flex;align-items:center;gap:14px;
   padding:18px 28px;border:1px solid var(--line-2);border-radius:99px;
   font:500 12px/1 var(--mono);letter-spacing:.22em;text-transform:uppercase;
   transition:background .35s, color .35s, border-color .35s, padding .4s var(--t2);
+  white-space:nowrap;
 }
-.roster-slide:hover .roster-slide__cta{background:var(--fg);color:#000;border-color:var(--fg);padding-right:36px}
-
-.roster-progress{
-  position:absolute;left:0;right:0;bottom:0;height:2px;background:rgba(245,241,234,.06);z-index:5;
+.roster-card__inner:hover .roster-card__cta{
+  background:var(--red);border-color:var(--red);color:#fff;padding-right:38px;
 }
-.roster-progress__bar{display:block;height:100%;width:0;background:var(--fg);transition:width .15s linear}
+.roster-card__inner:hover .roster-card__cta{
+  text-shadow:-1.5px 0 var(--red), 1.5px 0 var(--blue);
+}
 
-/* mobile fallback — vertical stack */
+/* tablet */
 @media (max-width:900px){
-  .roster-stage{height:auto}
-  .roster-track{position:static;height:auto;width:100%;flex-direction:column}
-  .roster-slide{flex:0 0 auto;height:auto;min-height:80vh;width:100%;border-right:0;border-bottom:1px solid var(--line);padding:80px var(--pad)}
-  .roster-slide__bgnum{font-size:60vw}
-  .roster-slide__name{font-size:clamp(72px,18vw,140px)}
-  .roster-progress{display:none}
+  .roster-card{position:relative;height:auto;min-height:90vh}
+  .roster-card__inner{padding:80px var(--pad)}
+  .roster-card__name{font-size:clamp(72px,18vw,140px)}
+  .roster-card__bgnum{font-size:80vw}
+  .roster-card__bottom{flex-direction:column;align-items:flex-start;gap:24px}
 }
 
 /* =========================================================
-   GLITCH HOVER on key links
+   GLITCH HOVER on key links (kept)
    ========================================================= */
 .btn--primary,
 .nav__cta,
 .contact__big,
-.roster-slide__cta,
 .artist-next a{
   position:relative;
 }
 .btn--primary:hover,
-.nav__cta:hover,
-.roster-slide:hover .roster-slide__cta{
-  text-shadow: 1.5px 0 rgba(255,255,255,.45), -1.5px 0 rgba(245,241,234,.45);
+.nav__cta:hover{
+  text-shadow:-1.5px 0 var(--red), 1.5px 0 var(--blue);
 }
 
-/* manifest sub-spacing tighten — looks too sparse w/ new line-height */
 .manifest__text{max-width:24ch}
 
 /* =========================================================
@@ -893,20 +940,11 @@ body[data-page="artist"]{background:#000}
 /* Glitch hover — proper RGB shift in red+blue */
 .btn--primary:hover,
 .nav__cta:hover,
-.roster-slide:hover .roster-slide__cta,
 .contact__big:hover{
   text-shadow:
     -1.5px 0 var(--red),
     1.5px 0 var(--blue);
 }
-
-/* Roster slide CTA hover: red fill */
-.roster-slide:hover .roster-slide__cta{background:var(--red);border-color:var(--red);color:#fff}
-
-/* Roster slide hover bg tint per artist */
-.roster-slide[data-bg="lylone"]:hover{background:linear-gradient(135deg,#0a0a0a 60%,rgba(191,10,48,.08))}
-.roster-slide[data-bg="zo68"]:hover{background:linear-gradient(135deg,#0a0a0a 60%,rgba(0,40,104,.1))}
-.roster-slide[data-bg="deeaxee"]:hover{background:linear-gradient(135deg,#0a0a0a 60%,rgba(245,241,234,.06))}
 
 /* Contact big: red on hover */
 .contact__big:hover{color:var(--red);padding-left:16px}
