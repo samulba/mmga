@@ -65,7 +65,7 @@
 
 <main id="top">
 
-  <!-- HERO -->
+  <!-- HERO — Wordmark -->
   <section class="hero" id="hero">
     <div class="hero__mesh" aria-hidden="true">
       <span class="blob blob--a"></span>
@@ -75,24 +75,18 @@
     <div class="hero__grid" aria-hidden="true"></div>
     <div class="hero__noise" aria-hidden="true"></div>
 
-    <!-- floating stars (US-flag vibe) -->
     <div class="hero__stars" aria-hidden="true">
       <i style="left:6%;top:18%">★</i>
-      <i style="left:12%;top:62%;font-size:18px">★</i>
-      <i style="left:21%;top:32%;animation-delay:.4s">★</i>
-      <i style="left:30%;top:78%;font-size:11px;animation-delay:.8s">★</i>
-      <i style="left:42%;top:14%;font-size:16px;animation-delay:.2s">★</i>
-      <i style="left:56%;top:56%;animation-delay:.6s">★</i>
-      <i style="left:68%;top:22%;font-size:20px;animation-delay:1.1s">★</i>
-      <i style="left:74%;top:74%;animation-delay:.3s">★</i>
-      <i style="left:84%;top:38%;font-size:12px;animation-delay:.9s">★</i>
-      <i style="left:92%;top:64%;font-size:15px;animation-delay:.5s">★</i>
-      <i style="left:48%;top:84%;font-size:10px;animation-delay:1.4s">★</i>
-      <i style="left:36%;top:48%;font-size:13px;animation-delay:1.6s">★</i>
+      <i style="left:12%;top:74%;font-size:18px">★</i>
+      <i style="left:21%;top:24%;animation-delay:.4s">★</i>
+      <i style="left:30%;top:84%;font-size:11px;animation-delay:.8s">★</i>
+      <i style="left:42%;top:12%;font-size:16px;animation-delay:.2s">★</i>
+      <i style="left:56%;top:88%;animation-delay:.6s">★</i>
+      <i style="left:68%;top:14%;font-size:20px;animation-delay:1.1s">★</i>
+      <i style="left:74%;top:80%;animation-delay:.3s">★</i>
+      <i style="left:84%;top:22%;font-size:12px;animation-delay:.9s">★</i>
+      <i style="left:92%;top:74%;font-size:15px;animation-delay:.5s">★</i>
     </div>
-
-    <!-- giant background M -->
-    <div class="hero__bigm" aria-hidden="true">M</div>
 
     <!-- top bar -->
     <div class="hero__top">
@@ -102,54 +96,52 @@
       </div>
       <div class="hero__clock" aria-hidden="true">
         <span id="heroClock">--:--:--</span>
-        <span class="hero__clock-sub">MUNICH · 48.137° N</span>
+        <span class="hero__clock-sub">MÜNCHEN · 48.137° N</span>
       </div>
     </div>
 
-    <!-- title — RGB-split US-Flag style, 3 lines -->
-    <h1 class="hero__title" data-magnet>
-      <span class="line">
-        <span class="layer layer--blue" aria-hidden="true">MAKE</span>
-        <span class="layer layer--red" aria-hidden="true">MAKE</span>
-        <span class="layer layer--solid">MAKE</span>
-      </span>
-      <span class="line">
-        <span class="layer layer--blue" aria-hidden="true">MUNICH</span>
-        <span class="layer layer--red" aria-hidden="true">MUNICH</span>
-        <span class="layer layer--solid">MUNICH</span>
-      </span>
-      <span class="line line--shift">
-        <span class="layer layer--blue" aria-hidden="true">GREATE&nbsp;AGAIN.</span>
-        <span class="layer layer--red" aria-hidden="true">GREATE&nbsp;AGAIN.</span>
-        <span class="layer layer--stroke">GREATE&nbsp;AGAIN.</span>
-      </span>
-    </h1>
+    <!-- vertical edge labels -->
+    <span class="hero__edge hero__edge--left" aria-hidden="true">MUSIC LABEL · MÜNCHEN</span>
+    <span class="hero__edge hero__edge--right" aria-hidden="true">MMGA / 2021—∞</span>
 
-    <!-- bottom: visualizer + lead + scroll -->
-    <div class="hero__bottom">
-      <div class="hero__viz" aria-hidden="true">
-        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-      </div>
-      <div class="hero__bottom-row">
-        <p class="hero__lead">
-          Ein unabhängiges Label aus München.<br/>
-          Wir bauen die nächste Generation deutschen Sounds —
-          Artist für Artist, Track für Track.
-        </p>
-        <div class="hero__scroll">
-          <span class="dot"></span>
-          <span>scroll for more</span>
+    <!-- THE WORDMARK -->
+    <div class="wordmark" data-magnet>
+      <span class="wordmark__letter" data-letter="M" style="--i:0">
+        <span class="wm-layer wm--blue" aria-hidden="true">M</span>
+        <span class="wm-layer wm--red" aria-hidden="true">M</span>
+        <span class="wm-layer wm--solid">M</span>
+      </span>
+      <span class="wordmark__letter" data-letter="M" style="--i:1">
+        <span class="wm-layer wm--blue" aria-hidden="true">M</span>
+        <span class="wm-layer wm--red" aria-hidden="true">M</span>
+        <span class="wm-layer wm--solid">M</span>
+      </span>
+      <span class="wordmark__letter" data-letter="G" style="--i:2">
+        <span class="wm-layer wm--blue" aria-hidden="true">G</span>
+        <span class="wm-layer wm--red" aria-hidden="true">G</span>
+        <span class="wm-layer wm--solid">G</span>
+      </span>
+      <span class="wordmark__letter" data-letter="A" style="--i:3">
+        <span class="wm-layer wm--blue" aria-hidden="true">A</span>
+        <span class="wm-layer wm--red" aria-hidden="true">A</span>
+        <span class="wm-layer wm--solid">A</span>
+      </span>
+    </div>
+
+    <p class="hero__tagline">
+      Make · Munich · Greate · Again
+    </p>
+
+    <!-- bottom marquee + scroll -->
+    <div class="hero__foot">
+      <div class="hero__marquee" aria-hidden="true">
+        <div class="hero__marquee-track">
+          <span>MAKE MUNICH GREATE AGAIN</span><b>★</b><span>LYLONE</span><b>★</b><span>ZO68</span><b>★</b><span>DEEAXEE</span><b>★</b><span>MAKE MUNICH GREATE AGAIN</span><b>★</b><span>LYLONE</span><b>★</b><span>ZO68</span><b>★</b><span>DEEAXEE</span><b>★</b><span>MAKE MUNICH GREATE AGAIN</span><b>★</b><span>LYLONE</span><b>★</b><span>ZO68</span><b>★</b><span>DEEAXEE</span><b>★</b>
         </div>
       </div>
-    </div>
-
-    <!-- in-hero marquees, two layers, opposite directions -->
-    <div class="hero__marquee" aria-hidden="true">
-      <div class="hero__marquee-track">
-        <span>MAKE MUNICH GREATE AGAIN</span><b>★</b><span>089</span><b>★</b><span>INDEPENDENT</span><b>★</b><span>MOVEMENT</span><b>★</b><span>MAKE MUNICH GREATE AGAIN</span><b>★</b><span>089</span><b>★</b><span>INDEPENDENT</span><b>★</b><span>MOVEMENT</span><b>★</b><span>MAKE MUNICH GREATE AGAIN</span><b>★</b><span>089</span><b>★</b>
-      </div>
-      <div class="hero__marquee-track hero__marquee-track--reverse">
-        <span>LYLONE</span><b>·</b><span>ZO68</span><b>·</b><span>DEEAXEE</span><b>·</b><span>MMGA RECORDS</span><b>·</b><span>LYLONE</span><b>·</b><span>ZO68</span><b>·</b><span>DEEAXEE</span><b>·</b><span>MMGA RECORDS</span><b>·</b><span>LYLONE</span><b>·</b><span>ZO68</span><b>·</b><span>DEEAXEE</span><b>·</b><span>MMGA RECORDS</span><b>·</b>
+      <div class="hero__scroll">
+        <span class="dot"></span>
+        <span>scroll</span>
       </div>
     </div>
   </section>

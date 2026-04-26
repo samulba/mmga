@@ -116,32 +116,37 @@
     });
   }
 
-  /* ---------- Hero entry animation ---------- */
+  /* ---------- Hero entry animation (wordmark) ---------- */
   function animateHero() {
     if (!window.gsap) return;
-    const lines = document.querySelectorAll('.hero__title .line');
-    if (!lines.length) return;
+    const letters = document.querySelectorAll('.wordmark__letter');
+    if (!letters.length) return;
     if (reduceMotion) return;
 
-    /* only animate the lines as a whole — keeps the red/blue ghost
-       layer offsets intact (they're absolute children) */
-    gsap.set(lines, { yPercent: 110, opacity: 0 });
-    gsap.to(lines, {
-      yPercent: 0, opacity: 1,
-      duration: 1.2, ease: 'expo.out', stagger: 0.08, delay: 0.15,
+    /* letters explode into place from a tight collapsed center */
+    gsap.set(letters, { yPercent: 130, scale: 0.4, opacity: 0, rotate: -8 });
+    gsap.to(letters, {
+      yPercent: 0, scale: 1, opacity: 1, rotate: 0,
+      duration: 1.4, ease: 'expo.out',
+      stagger: { each: 0.09, from: 'center' },
+      delay: 0.15,
+    });
+
+    gsap.from('.hero__tagline', {
+      letterSpacing: '0em', opacity: 0,
+      duration: 1.6, delay: 1.1, ease: 'expo.out',
+    });
+
+    gsap.from('.hero__edge', {
+      opacity: 0, y: 30,
+      duration: 1, delay: 1.2, stagger: 0.12, ease: 'power3.out',
     });
 
     gsap.from('.hero__top > *, .hero__meta .tag', {
       y: -16, opacity: 0, duration: .8, stagger: .08, delay: .5, ease: 'power3.out',
     });
-    gsap.from('.hero__bottom-row > *', {
-      y: 20, opacity: 0, duration: .9, stagger: .15, delay: .85, ease: 'power3.out',
-    });
-    gsap.from('.hero__viz', {
-      scaleX: 0, transformOrigin: 'left center', duration: 1.6, delay: .7, ease: 'expo.out',
-    });
-    gsap.from('.hero__marquee', {
-      y: 30, opacity: 0, duration: .9, delay: 1.1, ease: 'power3.out',
+    gsap.from('.hero__foot > *', {
+      y: 30, opacity: 0, duration: .9, stagger: .12, delay: 1.0, ease: 'power3.out',
     });
   }
 
@@ -159,26 +164,48 @@
     tick(); setInterval(tick, 1000);
   }
 
-  /* ---------- Hero title magnet ---------- */
+  /* ---------- Wordmark per-letter magnet ---------- */
   function initHeroMagnet() {
     if (window.matchMedia('(max-width:900px)').matches || reduceMotion) return;
-    const title = document.querySelector('.hero__title[data-magnet]');
+    const wordmark = document.querySelector('.wordmark[data-magnet]');
     const hero = document.querySelector('.hero');
-    if (!title || !hero) return;
-    let raf = null, tx = 0, ty = 0, x = 0, y = 0;
+    if (!wordmark || !hero) return;
+    const letters = wordmark.querySelectorAll('.wordmark__letter');
+    /* each letter wiggles based on its distance from cursor — closer = stronger */
+    let raf = null, mx = 0, my = 0;
+    const state = Array.from(letters).map(() => ({ tx: 0, ty: 0, x: 0, y: 0 }));
+
     hero.addEventListener('mousemove', e => {
-      const r = hero.getBoundingClientRect();
-      tx = ((e.clientX - r.left) / r.width - 0.5) * 14;
-      ty = ((e.clientY - r.top) / r.height - 0.5) * 8;
+      mx = e.clientX; my = e.clientY;
+      letters.forEach((el, i) => {
+        const r = el.getBoundingClientRect();
+        const cx = r.left + r.width / 2;
+        const cy = r.top + r.height / 2;
+        const dx = mx - cx;
+        const dy = my - cy;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        const max = 360;
+        const pull = Math.max(0, 1 - dist / max);
+        state[i].tx = (dx / dist || 0) * pull * 22;
+        state[i].ty = (dy / dist || 0) * pull * 14;
+      });
       if (!raf) raf = requestAnimationFrame(loop);
     });
-    hero.addEventListener('mouseleave', () => { tx = 0; ty = 0; });
+    hero.addEventListener('mouseleave', () => {
+      state.forEach(s => { s.tx = 0; s.ty = 0; });
+      if (!raf) raf = requestAnimationFrame(loop);
+    });
+
     function loop() {
-      x += (tx - x) * 0.08;
-      y += (ty - y) * 0.08;
-      title.style.transform = `translate(${x}px, ${y}px)`;
-      if (Math.abs(tx - x) > .1 || Math.abs(ty - y) > .1) raf = requestAnimationFrame(loop);
-      else raf = null;
+      let still = true;
+      letters.forEach((el, i) => {
+        const s = state[i];
+        s.x += (s.tx - s.x) * 0.12;
+        s.y += (s.ty - s.y) * 0.12;
+        if (Math.abs(s.tx - s.x) > .1 || Math.abs(s.ty - s.y) > .1) still = false;
+        el.style.transform = `translate(${s.x.toFixed(2)}px, ${s.y.toFixed(2)}px)`;
+      });
+      raf = still ? null : requestAnimationFrame(loop);
     }
   }
 

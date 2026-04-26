@@ -172,85 +172,80 @@ html.lenis,html.lenis body{height:auto}
 .hero__clock-sub{display:block;color:var(--fg-mute);margin-top:4px;font-size:10px}
 @media (max-width:600px){.hero__clock{display:none}}
 
-.hero__title{
+/* edge labels (vertical) */
+.hero__edge{
+  position:absolute;z-index:3;
+  font:500 10px/1 var(--mono);letter-spacing:.4em;text-transform:uppercase;color:var(--fg-mute);
+  writing-mode:vertical-rl;
+}
+.hero__edge--left{left:18px;top:50%;transform:translateY(-50%) rotate(180deg)}
+.hero__edge--right{right:18px;top:50%;transform:translateY(-50%)}
+@media (max-width:760px){.hero__edge{display:none}}
+
+/* WORDMARK — MMGA */
+.wordmark{
   position:relative;z-index:3;
-  font-family:var(--display);
-  font-size:clamp(56px,11vw,170px);
-  line-height:.88;letter-spacing:-.045em;text-transform:uppercase;
-  align-self:center;margin:0;
-  font-weight:600;
+  display:flex;justify-content:center;align-items:center;
+  width:100%;
+  align-self:center;
+  font-family:var(--display);font-weight:500;
+  text-transform:uppercase;
+  line-height:.78;letter-spacing:-.06em;
+  user-select:none;
 }
-.hero__title .line{
-  position:relative;display:block;
-  /* offset-aware: kids use absolute positioning relative to the line */
+.wordmark__letter{
+  position:relative;display:inline-block;
+  font-size:clamp(140px, 26vw, 460px);
+  line-height:.78;
+  will-change:transform;
+  transition:transform .5s var(--t2), filter .35s;
+  margin:0 -.02em;
 }
-.hero__title .layer{
-  display:block;line-height:.88;will-change:transform;
-  font-weight:inherit;
+.wordmark__letter:hover{transform:translateY(-12px) scale(1.04);filter:brightness(1.15)}
+.wm-layer{display:inline-block;line-height:.78}
+.wm--solid{color:var(--fg);position:relative;z-index:3}
+.wm--red{
+  color:var(--red);position:absolute;left:0;top:0;z-index:2;
+  transform:translate(6px,0) skewX(-3deg);mix-blend-mode:screen;filter:blur(.3px);pointer-events:none;
 }
-.hero__title .layer--solid{
-  color:var(--fg);position:relative;z-index:3;
+.wm--blue{
+  color:var(--blue);position:absolute;left:0;top:0;z-index:1;
+  transform:translate(-6px,0) skewX(3deg);mix-blend-mode:screen;filter:blur(.3px);pointer-events:none;
 }
-/* RGB-split style ghost layers — sit at the line's same baseline */
-.hero__title .layer--red,
-.hero__title .layer--blue{
-  position:absolute;left:0;top:0;right:0;
-  pointer-events:none;
-}
-.hero__title .layer--red{
-  color:var(--red);z-index:2;
-  transform:translate(6px, 0) skewX(-2deg);
-  mix-blend-mode:screen;
-  filter:blur(.3px);
-}
-.hero__title .layer--blue{
-  color:var(--blue);z-index:1;
-  transform:translate(-6px, 0) skewX(2deg);
-  mix-blend-mode:screen;
-  filter:blur(.3px);
-}
-/* line-shift: the stroked outline gets thicker for the third line */
-.hero__title .line--shift .layer--stroke{
-  position:relative;z-index:3;
-  -webkit-text-stroke:1.5px var(--fg);color:transparent;
+.wordmark__letter:hover .wm--red{transform:translate(10px,0) skewX(-5deg)}
+.wordmark__letter:hover .wm--blue{transform:translate(-10px,0) skewX(5deg)}
+
+/* underline tagline */
+.hero__tagline{
+  position:relative;z-index:3;text-align:center;
+  font:500 11px/1 var(--mono);letter-spacing:.5em;text-transform:uppercase;color:var(--fg);
+  padding-top:6px;
 }
 
-.hero__bottom{position:relative;z-index:3;display:flex;flex-direction:column;gap:18px}
-.hero__viz{
-  display:flex;gap:3px;align-items:flex-end;height:36px;
-  border-bottom:1px solid var(--line);padding-bottom:10px;
-  mask-image:linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
-}
-.hero__viz span{
-  flex:1;background:var(--fg);min-width:2px;border-radius:1px;
-  height:20%;animation:viz 1.2s ease-in-out infinite alternate;transform-origin:bottom;
-}
-.hero__viz span:nth-child(3n){background:var(--accent);animation-duration:.9s}
-.hero__viz span:nth-child(5n){background:var(--accent-2);animation-duration:1.4s}
-.hero__viz span:nth-child(2n){animation-delay:.1s}
-.hero__viz span:nth-child(7n){animation-delay:.3s}
-.hero__viz span:nth-child(11n){animation-delay:.5s}
-@keyframes viz{0%{height:8%}100%{height:92%}}
-@media (prefers-reduced-motion:reduce){.hero__viz span{animation:none;height:40%}.hero__mesh .blob{animation:none}}
-
-.hero__bottom-row{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap}
-.hero__lead{max-width:42ch;color:var(--fg);font-size:clamp(15px,1.25vw,18px);line-height:1.65;font-weight:400}
-.hero__scroll{display:flex;align-items:center;gap:10px;font:500 11px/1 var(--mono);
-  letter-spacing:.3em;text-transform:uppercase;color:var(--fg-mute);white-space:nowrap}
-.hero__scroll .dot{width:8px;height:8px;background:var(--accent);border-radius:50%;
-  animation:bounce 1.6s infinite var(--t2);box-shadow:0 0 12px var(--accent)}
-@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
-
+/* Foot: marquee + scroll indicator */
+.hero__foot{position:relative;z-index:3;display:flex;align-items:center;gap:0}
 .hero__marquee{
-  position:relative;z-index:3;border-top:1px solid var(--line);padding:14px 0;
-  overflow:hidden;font-family:var(--display);
+  flex:1;position:relative;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:16px 0;overflow:hidden;font-family:var(--display);font-weight:500;
   font-size:clamp(22px,2.4vw,34px);letter-spacing:.04em;text-transform:uppercase;
-  margin:0 calc(-1 * var(--pad));
+  margin-left:calc(-1 * var(--pad));
 }
-.hero__marquee-track{display:flex;gap:40px;white-space:nowrap;width:max-content;
-  animation:tick 28s linear infinite;align-items:center}
+.hero__marquee-track{display:flex;gap:36px;white-space:nowrap;width:max-content;
+  animation:tick 32s linear infinite;align-items:center}
 .hero__marquee-track span{color:var(--fg)}
-.hero__marquee-track b{color:var(--accent);font-weight:400;font-size:.6em}
+.hero__marquee-track b{color:var(--red);font-weight:400;font-size:.6em}
+
+.hero__scroll{
+  display:flex;align-items:center;gap:10px;
+  padding:18px 0 18px 24px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  margin-right:calc(-1 * var(--pad));padding-right:var(--pad);
+  font:500 11px/1 var(--mono);letter-spacing:.3em;text-transform:uppercase;color:var(--fg-mute);
+  white-space:nowrap;
+}
+.hero__scroll .dot{width:8px;height:8px;background:var(--red);border-radius:50%;
+  animation:bounce 1.6s infinite var(--t2);box-shadow:0 0 12px var(--red)}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+@media (max-width:600px){.hero__scroll span:not(.dot){display:none}}
 
 
 /* ---------- Ticker ---------- */
@@ -554,14 +549,10 @@ body[data-page="artist"]{background:#000}
    ========================================================= */
 
 /* alle Display-Headlines: cleaner weight + tighter tracking */
-.hero__title,
 .section-head h2,
 .contact__h,
 .movement__h,
 .manifest__text,
-.featured__cover-title,
-.featured__text h2,
-.release__info h3,
 .big-text,
 .stats b,
 .join-card h3,
@@ -580,11 +571,9 @@ body[data-page="artist"]{background:#000}
 }
 
 /* extra-leichte size-spezifische Adjustments */
-.hero__title{font-weight:500;letter-spacing:-.045em;line-height:.9}
 .manifest__text{font-weight:500;letter-spacing:-.025em;line-height:1.15}
 .section-head h2,.contact__h,.movement__h{font-weight:600;letter-spacing:-.035em}
 .artist-hero__name{font-weight:500;letter-spacing:-.05em;line-height:.88}
-.featured__cover-title{font-weight:600;letter-spacing:-.04em}
 .footer__big{font-weight:600;letter-spacing:-.05em}
 .big-text{font-weight:500;letter-spacing:-.04em}
 
@@ -602,28 +591,11 @@ body[data-page="artist"]{background:#000}
   opacity:.12;
 }
 
-/* layered title — Off-White-Schichten statt Accent */
-.hero__title .layer--stroke{
-  -webkit-text-stroke:1px rgba(245,241,234,.55);
-  opacity:.45;transform:translate(6px,6px);
-}
-.hero__title .line--shift .layer--stroke{
-  -webkit-text-stroke:1px var(--fg);opacity:1;
-}
-.hero__title .line--shift .layer--accent{
-  color:rgba(245,241,234,.5);transform:translate(-7px,7px);opacity:.7;
-}
-
 /* live-dot: dezent off-white statt grün */
 .tag--dot:before{background:#f5f1ea;box-shadow:0 0 8px rgba(245,241,234,.6)}
 
 /* Eyebrows — off-white statt orange */
 .eyebrow,.manifest__eyebrow{color:var(--fg)}
-
-/* Hero Visualizer — alles fg, nur opacity-Variation */
-.hero__viz span{background:rgba(245,241,234,.85)}
-.hero__viz span:nth-child(3n){background:rgba(245,241,234,.55)}
-.hero__viz span:nth-child(5n){background:rgba(245,241,234,.35)}
 
 /* Hero Marquee Stern — fg statt orange */
 .hero__marquee-track b{color:rgba(245,241,234,.4)}
@@ -690,25 +662,7 @@ body[data-page="artist"]{background:#000}
    WOW LAYER — big M, dual marquee, roster pin-scroll, glitch
    ========================================================= */
 
-/* huge background M */
-.hero__bigm{
-  position:absolute;left:50%;top:50%;transform:translate(-50%,-48%);
-  z-index:0;font-family:var(--display);
-  font-size:clamp(420px,80vw,1100px);font-weight:500;line-height:.78;
-  letter-spacing:-.08em;
-  color:transparent;-webkit-text-stroke:1px rgba(245,241,234,.08);
-  pointer-events:none;user-select:none;
-  animation:bigm-spin 60s linear infinite;
-}
-@keyframes bigm-spin{to{transform:translate(-50%,-48%) rotate(360deg)}}
-@media (prefers-reduced-motion:reduce){.hero__bigm{animation:none}}
-
-/* dual marquee */
-.hero__marquee{padding:10px 0;display:flex;flex-direction:column;gap:6px}
-.hero__marquee-track--reverse{
-  animation-direction:reverse;animation-duration:36s;
-  font-size:.7em;color:var(--fg-mute);
-}
+/* (big-m and dual marquee removed — wordmark is now the centerpiece) */
 .hero__marquee-track--reverse b{color:rgba(245,241,234,.25)}
 
 /* muted note in artist bios */
@@ -916,18 +870,6 @@ body[data-page="artist"]{background:#000}
 .hero__marquee-track > b{color:var(--red)}
 .hero__marquee-track--reverse > b{color:var(--blue)}
 
-/* Big-M: dual outline red+blue (like 3D-print misalignment) */
-.hero__bigm{
-  -webkit-text-stroke:1px rgba(245,241,234,.06);
-  text-shadow:
-    -1px 0 rgba(191,10,48,.10),
-    1px 0 rgba(0,40,104,.10);
-}
-
-/* Hero viz: tri-color */
-.hero__viz span{background:rgba(245,241,234,.7)}
-.hero__viz span:nth-child(3n){background:var(--red);opacity:.85}
-.hero__viz span:nth-child(5n){background:var(--blue);opacity:.85}
 
 /* Eyebrow + manifest highlight: red */
 .eyebrow,.manifest__eyebrow{color:var(--red)}
