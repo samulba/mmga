@@ -11,9 +11,13 @@
   --fg-mute:#a8a39a;
   --line:rgba(245,241,234,.14);
   --line-2:rgba(245,241,234,.30);
-  /* monochrome accent — wird durch echte MMGA-Farbe ersetzt sobald bekannt */
-  --accent:#f5f1ea;
-  --accent-2:#a8a39a;
+  /* US flag — Make Munich Greate Again */
+  --red:#BF0A30;
+  --red-soft:rgba(191,10,48,.6);
+  --blue:#002868;
+  --blue-soft:rgba(0,40,104,.6);
+  --accent:var(--red);
+  --accent-2:var(--blue);
   --paper:#efe8db;
   --black:#000;
   --radius:14px;
@@ -171,25 +175,44 @@ html.lenis,html.lenis body{height:auto}
 .hero__title{
   position:relative;z-index:3;
   font-family:var(--display);
-  font-size:clamp(72px,16.5vw,280px);
-  line-height:.86;letter-spacing:-.015em;text-transform:uppercase;
+  font-size:clamp(56px,11vw,170px);
+  line-height:.88;letter-spacing:-.045em;text-transform:uppercase;
   align-self:center;margin:0;
+  font-weight:600;
 }
-.hero__title .line{position:relative;display:block;isolation:isolate}
-.hero__title .layer{display:block;line-height:.86;will-change:transform}
-.hero__title .layer--solid{color:var(--fg);position:relative;z-index:2}
-.hero__title .layer--stroke{
-  -webkit-text-stroke:1.5px rgba(245,241,234,.85);color:transparent;
-  position:absolute;inset:0;z-index:1;transform:translate(8px,8px);opacity:.55;
+.hero__title .line{
+  position:relative;display:block;
+  /* offset-aware: kids use absolute positioning relative to the line */
 }
-.hero__title .line--shift{}
+.hero__title .layer{
+  display:block;line-height:.88;will-change:transform;
+  font-weight:inherit;
+}
+.hero__title .layer--solid{
+  color:var(--fg);position:relative;z-index:3;
+}
+/* RGB-split style ghost layers — sit at the line's same baseline */
+.hero__title .layer--red,
+.hero__title .layer--blue{
+  position:absolute;left:0;top:0;right:0;
+  pointer-events:none;
+}
+.hero__title .layer--red{
+  color:var(--red);z-index:2;
+  transform:translate(6px, 0) skewX(-2deg);
+  mix-blend-mode:screen;
+  filter:blur(.3px);
+}
+.hero__title .layer--blue{
+  color:var(--blue);z-index:1;
+  transform:translate(-6px, 0) skewX(2deg);
+  mix-blend-mode:screen;
+  filter:blur(.3px);
+}
+/* line-shift: the stroked outline gets thicker for the third line */
 .hero__title .line--shift .layer--stroke{
-  position:relative;z-index:2;-webkit-text-stroke:1.5px var(--fg);color:transparent;
-  transform:none;opacity:1;
-}
-.hero__title .line--shift .layer--accent{
-  position:absolute;inset:0;z-index:1;color:var(--accent);
-  transform:translate(-10px,10px);opacity:.9;mix-blend-mode:screen;
+  position:relative;z-index:3;
+  -webkit-text-stroke:1.5px var(--fg);color:transparent;
 }
 
 .hero__bottom{position:relative;z-index:3;display:flex;flex-direction:column;gap:18px}
@@ -787,3 +810,135 @@ body[data-page="artist"]{background:#000}
 
 /* manifest sub-spacing tighten — looks too sparse w/ new line-height */
 .manifest__text{max-width:24ch}
+
+/* =========================================================
+   USA OVERRIDE — flag colors, stripes, stars, glitch
+   ========================================================= */
+
+::selection{background:var(--red);color:#fff}
+
+/* Hero — subtle diagonal red stripes layer (USA flag vibe) */
+.hero{
+  background:
+    repeating-linear-gradient(
+      135deg,
+      transparent 0,
+      transparent 80px,
+      rgba(191,10,48,.04) 80px,
+      rgba(191,10,48,.04) 130px
+    ),
+    #070707;
+}
+
+/* Hero mesh — re-tint blobs to red & blue */
+.hero__mesh .blob--a{background:radial-gradient(circle, rgba(191,10,48,.45) 0%, transparent 60%);opacity:.45}
+.hero__mesh .blob--b{background:radial-gradient(circle, rgba(0,40,104,.55) 0%, transparent 60%);opacity:.4}
+.hero__mesh .blob--c{background:radial-gradient(circle, rgba(245,241,234,.35) 0%, transparent 60%);opacity:.18}
+
+/* Floating stars */
+.hero__stars{position:absolute;inset:0;z-index:1;pointer-events:none}
+.hero__stars i{
+  position:absolute;color:rgba(245,241,234,.65);font-style:normal;
+  font-size:14px;animation:twinkle 3s ease-in-out infinite;
+}
+.hero__stars i:nth-child(2n){color:var(--red);animation-duration:4s}
+.hero__stars i:nth-child(3n){color:var(--blue);animation-duration:5s}
+.hero__stars i:nth-child(odd){animation-direction:reverse}
+@keyframes twinkle{
+  0%,100%{opacity:.15;transform:scale(.8)}
+  50%{opacity:.95;transform:scale(1.2)}
+}
+
+/* Live-dot — red pulse with glow */
+.tag--dot:before{
+  background:var(--red);box-shadow:0 0 12px var(--red), 0 0 24px rgba(191,10,48,.5);
+  animation:pulse-red 1.6s infinite;
+}
+@keyframes pulse-red{
+  0%,100%{opacity:1;box-shadow:0 0 8px var(--red)}
+  50%{opacity:.5;box-shadow:0 0 18px var(--red), 0 0 36px rgba(191,10,48,.6)}
+}
+
+/* Hero clock dot (live indicator) red */
+.hero__clock #heroClock{color:var(--fg)}
+
+/* Hero scroll dot red */
+.hero__scroll .dot{background:var(--red);box-shadow:0 0 10px var(--red)}
+
+/* Hero marquee stars — alternating red/blue */
+.hero__marquee-track > b{color:var(--red)}
+.hero__marquee-track--reverse > b{color:var(--blue)}
+
+/* Big-M: dual outline red+blue (like 3D-print misalignment) */
+.hero__bigm{
+  -webkit-text-stroke:1px rgba(245,241,234,.06);
+  text-shadow:
+    -1px 0 rgba(191,10,48,.10),
+    1px 0 rgba(0,40,104,.10);
+}
+
+/* Hero viz: tri-color */
+.hero__viz span{background:rgba(245,241,234,.7)}
+.hero__viz span:nth-child(3n){background:var(--red);opacity:.85}
+.hero__viz span:nth-child(5n){background:var(--blue);opacity:.85}
+
+/* Eyebrow + manifest highlight: red */
+.eyebrow,.manifest__eyebrow{color:var(--red)}
+
+/* Buttons */
+.btn--primary{background:var(--red);color:#fff}
+.btn--primary:hover{background:var(--blue);color:#fff;box-shadow:none;transform:translateY(-2px)}
+.nav__cta:hover{background:var(--red);border-color:var(--red);color:#fff}
+
+/* Glitch hover — proper RGB shift in red+blue */
+.btn--primary:hover,
+.nav__cta:hover,
+.roster-slide:hover .roster-slide__cta,
+.contact__big:hover{
+  text-shadow:
+    -1.5px 0 var(--red),
+    1.5px 0 var(--blue);
+}
+
+/* Roster slide CTA hover: red fill */
+.roster-slide:hover .roster-slide__cta{background:var(--red);border-color:var(--red);color:#fff}
+
+/* Roster slide hover bg tint per artist */
+.roster-slide[data-bg="lylone"]:hover{background:linear-gradient(135deg,#0a0a0a 60%,rgba(191,10,48,.08))}
+.roster-slide[data-bg="zo68"]:hover{background:linear-gradient(135deg,#0a0a0a 60%,rgba(0,40,104,.1))}
+.roster-slide[data-bg="deeaxee"]:hover{background:linear-gradient(135deg,#0a0a0a 60%,rgba(245,241,234,.06))}
+
+/* Contact big: red on hover */
+.contact__big:hover{color:var(--red);padding-left:16px}
+.contact__h em{color:var(--red);font-style:normal}
+
+/* Tracklist hover (kept for future, harmless) */
+.tracklist li:hover{color:var(--red)}
+
+/* Footer link hover */
+.footer__links a:hover,.footer__bottom a:hover{color:var(--red)}
+
+/* Cursor */
+.cursor--ring.is-hover{background:rgba(191,10,48,.10);border-color:var(--red)}
+
+/* Artist next: red on hover */
+.artist-next a:hover{color:var(--red)}
+.artist-row:hover .artist-row__name,
+.artist-row:hover .artist-row__arrow{color:var(--red)}
+
+/* Stats numerals subtle red tint via gradient (just first one) */
+.stats li:first-child b{
+  background:linear-gradient(180deg,var(--fg) 60%,var(--red));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.stats li:nth-child(3) b{
+  background:linear-gradient(180deg,var(--fg) 60%,var(--blue));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+
+/* Hero section: ensure title doesn't clip — let it truncate naturally
+   if viewport is too short by allowing scroll within the hero on
+   tiny landscape phones */
+@media (max-height:600px){
+  .hero{height:auto;min-height:100svh}
+}

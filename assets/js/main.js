@@ -123,13 +123,12 @@
     if (!lines.length) return;
     if (reduceMotion) return;
 
-    const layers = document.querySelectorAll('.hero__title .layer');
-    gsap.set(layers, { yPercent: 110, opacity: 0 });
-
-    gsap.to(layers, {
-      yPercent: 0, opacity: (i, el) => el.classList.contains('layer--stroke') && !el.closest('.line--shift') ? .55
-        : el.classList.contains('layer--accent') ? .9 : 1,
-      duration: 1.2, ease: 'expo.out', stagger: 0.06, delay: 0.1,
+    /* only animate the lines as a whole — keeps the red/blue ghost
+       layer offsets intact (they're absolute children) */
+    gsap.set(lines, { yPercent: 110, opacity: 0 });
+    gsap.to(lines, {
+      yPercent: 0, opacity: 1,
+      duration: 1.2, ease: 'expo.out', stagger: 0.08, delay: 0.15,
     });
 
     gsap.from('.hero__top > *, .hero__meta .tag', {
@@ -255,21 +254,28 @@
     if (!stage || !track || !slides || slides.length === 0) return;
 
     const total = slides.length;
-    const distance = (total - 1) * window.innerWidth;
+    /* keep stage tall enough to host the full pin */
+    stage.style.height = (total * 100) + 'vh';
+
+    const getDistance = () => track.scrollWidth - window.innerWidth;
 
     gsap.to(track, {
-      x: -distance,
+      x: () => -getDistance(),
       ease: 'none',
       scrollTrigger: {
         trigger: stage,
         start: 'top top',
-        end: () => '+=' + distance,
+        end: () => '+=' + getDistance(),
         pin: track,
         scrub: 0.6,
         invalidateOnRefresh: true,
+        anticipatePin: 1,
         onUpdate: self => { if (bar) bar.style.width = (self.progress * 100) + '%'; },
       },
     });
+
+    /* refresh on resize so the math stays right */
+    window.addEventListener('resize', () => window.ScrollTrigger.refresh(), { passive: true });
   }
 
   /* ---------- Number counter ---------- */
