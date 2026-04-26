@@ -8,11 +8,12 @@
   --bg-2:#111;
   --fg:#f5f1ea;
   --fg-soft:#d8d3c9;
-  --fg-mute:#a8a39a;       /* heller für bessere Lesbarkeit */
+  --fg-mute:#a8a39a;
   --line:rgba(245,241,234,.14);
   --line-2:rgba(245,241,234,.30);
-  --accent:#ff5b1f;
-  --accent-2:#3aa0ff;
+  /* monochrome accent — wird durch echte MMGA-Farbe ersetzt sobald bekannt */
+  --accent:#f5f1ea;
+  --accent-2:#a8a39a;
   --paper:#efe8db;
   --black:#000;
   --radius:14px;
@@ -22,7 +23,7 @@
   --section-pad:clamp(96px, 12vw, 180px);
   --t1:cubic-bezier(.7,0,.2,1);
   --t2:cubic-bezier(.16,1,.3,1);
-  --display:'Anton', 'Bebas Neue', sans-serif;
+  --display:'Space Grotesk', 'Inter', system-ui, sans-serif;
   --sans:'Inter', system-ui, -apple-system, sans-serif;
   --mono:'Space Grotesk', ui-monospace, monospace;
 }
@@ -523,3 +524,141 @@ body[data-page="artist"]{background:#000}
   *,*:before,*:after{transition:none !important;animation:none !important}
   .fade-up{opacity:1;transform:none}
 }
+
+/* =========================================================
+   THEME OVERRIDE — clean type + monochrome palette
+   (überschreibt alte Anton-/Akzent-Defaults)
+   ========================================================= */
+
+/* alle Display-Headlines: cleaner weight + tighter tracking */
+.hero__title,
+.section-head h2,
+.contact__h,
+.movement__h,
+.manifest__text,
+.featured__cover-title,
+.featured__text h2,
+.release__info h3,
+.big-text,
+.stats b,
+.join-card h3,
+.contact__big,
+.footer__brand h3,
+.footer__big,
+.artist-hero__name,
+.artist-bio h2,
+.artist-discog h2,
+.artist-listen h2,
+.artist-next a,
+.nav__logo,
+.loader__text{
+  font-weight:600;
+  letter-spacing:-.028em;
+}
+
+/* extra-leichte size-spezifische Adjustments */
+.hero__title{font-weight:500;letter-spacing:-.045em;line-height:.9}
+.manifest__text{font-weight:500;letter-spacing:-.025em;line-height:1.15}
+.section-head h2,.contact__h,.movement__h{font-weight:600;letter-spacing:-.035em}
+.artist-hero__name{font-weight:500;letter-spacing:-.05em;line-height:.88}
+.featured__cover-title{font-weight:600;letter-spacing:-.04em}
+.footer__big{font-weight:600;letter-spacing:-.05em}
+.big-text{font-weight:500;letter-spacing:-.04em}
+
+/* monochrome hero mesh — kein Orange/Blau mehr */
+.hero__mesh .blob--a{
+  background:radial-gradient(circle, rgba(245,241,234,.55) 0%, transparent 60%);
+  opacity:.18;
+}
+.hero__mesh .blob--b{
+  background:radial-gradient(circle, rgba(245,241,234,.45) 0%, transparent 60%);
+  opacity:.14;
+}
+.hero__mesh .blob--c{
+  background:radial-gradient(circle, rgba(245,241,234,.55) 0%, transparent 60%);
+  opacity:.12;
+}
+
+/* layered title — Off-White-Schichten statt Accent */
+.hero__title .layer--stroke{
+  -webkit-text-stroke:1px rgba(245,241,234,.55);
+  opacity:.45;transform:translate(6px,6px);
+}
+.hero__title .line--shift .layer--stroke{
+  -webkit-text-stroke:1px var(--fg);opacity:1;
+}
+.hero__title .line--shift .layer--accent{
+  color:rgba(245,241,234,.5);transform:translate(-7px,7px);opacity:.7;
+}
+
+/* live-dot: dezent off-white statt grün */
+.tag--dot:before{background:#f5f1ea;box-shadow:0 0 8px rgba(245,241,234,.6)}
+
+/* Eyebrows — off-white statt orange */
+.eyebrow,.manifest__eyebrow{color:var(--fg)}
+
+/* Hero Visualizer — alles fg, nur opacity-Variation */
+.hero__viz span{background:rgba(245,241,234,.85)}
+.hero__viz span:nth-child(3n){background:rgba(245,241,234,.55)}
+.hero__viz span:nth-child(5n){background:rgba(245,241,234,.35)}
+
+/* Hero Marquee Stern — fg statt orange */
+.hero__marquee-track b{color:rgba(245,241,234,.4)}
+.hero__scroll .dot{background:var(--fg);box-shadow:0 0 8px rgba(245,241,234,.5)}
+
+/* Buttons — invert statt orange-fill */
+.btn--primary{background:var(--fg);color:#000}
+.btn--primary:hover{background:transparent;color:var(--fg);box-shadow:inset 0 0 0 1px var(--fg);transform:translateY(-2px)}
+.nav__cta:hover{background:var(--fg);border-color:var(--fg);color:#000}
+
+/* Cursor */
+.cursor{background:var(--fg)}
+.cursor--ring.is-hover{background:rgba(245,241,234,.08);border-color:var(--fg)}
+
+/* Tracklist hover */
+.tracklist li:hover{color:var(--fg);background:rgba(245,241,234,.03)}
+
+/* Releases hover waves — fg statt accent */
+.release:hover .release__waves span{background:var(--fg)}
+.release__play:hover{background:var(--fg);border-color:var(--fg);color:#000}
+
+/* Featured cover — monochrome dark */
+.featured__cover{
+  background:linear-gradient(135deg, #181818 0%, #0d0d0d 60%, #2a2a2a 100%);
+  box-shadow:0 60px 120px -30px rgba(0,0,0,.6), 0 30px 60px -20px rgba(0,0,0,.6);
+}
+
+/* Release covers — monochrome variants */
+.release__cover[data-cover="r1"]{background:linear-gradient(135deg,#1f1f1f,#3a3a3a)}
+.release__cover[data-cover="r2"]{background:linear-gradient(135deg,#0d0d0d,#1f1f1f)}
+.release__cover[data-cover="r3"]{background:linear-gradient(135deg,#2a2a2a,#444)}
+.release__cover[data-cover="r4"]{background:linear-gradient(135deg,#1a1a1a,#efe8db)}
+.release__cover[data-cover="r5"]{background:linear-gradient(135deg,#0a0a0a,#2a2a2a)}
+
+/* Artist hover name & arrow — fg statt accent */
+.artist-row:hover .artist-row__name{color:var(--fg)}
+.artist-row:hover .artist-row__arrow{color:var(--fg)}
+
+/* Artist preview gradients — monochrome */
+.artist-preview__inner[data-img="kira"]{background:linear-gradient(135deg,#222,#444)}
+.artist-preview__inner[data-img="vex"]{background:linear-gradient(135deg,#0d0d0d,#1a1a1a)}
+.artist-preview__inner[data-img="boy"]{background:linear-gradient(135deg,#1a1a1a,#333)}
+.artist-preview__inner[data-img="lira"]{background:linear-gradient(135deg,#222,#3a3a3a)}
+.artist-preview__inner[data-img="blok"]{background:linear-gradient(135deg,#0a0a0a,#1f1f1f)}
+
+/* Join cards hover */
+.join-card:hover{border-color:var(--fg);background:rgba(245,241,234,.04)}
+.join-card:before{
+  background:radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(245,241,234,.10), transparent 50%);
+}
+.join-card__icon{color:var(--fg)}
+
+/* Contact */
+.contact__h em{color:var(--fg-mute)}
+.contact__big:hover{color:var(--fg-mute)}
+
+/* Footer link hover */
+.footer__links a:hover,.footer__bottom a:hover{color:var(--fg)}
+
+/* Artist-next hover */
+.artist-next a:hover{color:var(--fg-mute)}
